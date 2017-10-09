@@ -17,5 +17,12 @@ router.route('/tutores')
             res.json(tutor_res);
         });
     })
+router.route('/tutores/:id')
+    .get((req, res) => {
+        Tutores.findById(req.params.id, (err, tutor)=>{
+            if(err) console.log(err);
+            res.json(tutor);
+        })
+    })
 
 module.exports = router;

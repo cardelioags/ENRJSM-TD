@@ -13,11 +13,9 @@ import { TutoresService } from "../../../services/tutores.service";
 export class TutoresComponent implements AfterViewInit {
 
   columns: ITdDataTableColumn[] = [
-    { name: 'matricula', label: 'Matrícula', sortable: true, width:150},
+    { name: '_id', label: 'Opciones', width:200},
     { name: 'nombre', label: 'Nombre', sortable: true, width: 300},
     { name: 'curp', label: 'CURP', width: 250 },
-    { name: 'grado', label: 'Grado', hidden: false },
-    { name: 'grupo', label: 'Grupo', sortable: true},
   ];
 
   data: any[] = []; 

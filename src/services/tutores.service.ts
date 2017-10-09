@@ -10,7 +10,10 @@ export class TutoresService {
     private headers = new Headers({'Content-Type':'application/json'});
 
         constructor(private http: Http){}
-    
+        tutor(id): Observable<any[]>{
+            return this.http.get(this.url + `/${id}`)
+            .map(res => res.json());
+        }
         todos(): Observable<any[]>{
             return this.http.get(this.url)
             .map( res => res.json());

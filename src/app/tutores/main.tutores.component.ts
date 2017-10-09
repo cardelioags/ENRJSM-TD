@@ -9,31 +9,16 @@ import { TdMediaService } from "@covalent/core";
 })
 export class MainTutoresComponent implements AfterViewInit {
   navmenu: Object[] = [{
-    icon: 'looks_one',
+    icon: 'list',
     route: '/tutores',
     title: 'Listar Tutores',
-    description: 'Alumnos',
+    description: 'Muestra todos los tutores',
   }, {
-    icon: 'looks_two',
+    icon: 'person_add',
     route: '/tutores/nuevo',
     title: 'Nuevo Tutor',
     description: 'Calificaciones',
-  }, {
-    icon: 'looks_3',
-    route: '.',
-    title: 'Third item',
-    description: 'Item description',
-  }, {
-    icon: 'looks_4',
-    route: '.',
-    title: 'Fourth item',
-    description: 'Item description',
-  }, {
-    icon: 'looks_5',
-    route: '.',
-    title: 'Fifth item',
-    description: 'Item description',
-  },
+  }
   ];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef,

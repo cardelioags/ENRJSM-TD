@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { TutoresService } from '../../../services/tutores.service'
+import { TutoresService } from '../../../services/tutores.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-tutor-nuevo',
@@ -8,10 +10,32 @@ import { TutoresService } from '../../../services/tutores.service'
   providers: [TutoresService]
 })
 export class TutorNuevoComponent implements OnInit {
-  tutor = {nombre: ''};
-  constructor(private tutores: TutoresService, private ch: ChangeDetectorRef) { }
+  private tutor = {nombre: ''};
+  private sub: any;
+  private id: any;
+  private titulo = ""
+
+  constructor(
+    private tutores: TutoresService, 
+    private ch: ChangeDetectorRef,
+    private route: ActivatedRoute,
+    private location: Location
+  ) { }
 
   ngOnInit() {
+    console.log(location.href);
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+      if (this.id !== undefined){
+        this.titulo = 'Editar Tutor';
+        this.tutores.tutor(this.id)
+        .subscribe((res:any) => {
+          this.tutor = res;
+        })
+      }else{
+        this.titulo = 'Nuevo Tutor';
+      }
+    })
   }
 
   guardar(){

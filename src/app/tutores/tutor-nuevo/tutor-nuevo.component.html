@@ -3,7 +3,7 @@
     <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
           <mat-icon>arrow_back</mat-icon>
       </button>
-    <span>Nuevo Tutor</span>
+    <span>{{titulo}}<b *ngIf="id !== undefined">{{": " + tutor.nombre}}</b></span>
     <span flex></span>
     <button mat-icon-button><mat-icon>settings</mat-icon></button>
   </div>

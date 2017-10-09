@@ -24,8 +24,8 @@ const routes: Routes = [
     path: 'tutores', component: MainTutoresComponent, children:
       [
         {path: '', component: TutoresComponent},
-        {path: 'nuevo', component: TutorNuevoComponent}
-        {path: 'editar/:id', component: TutoresComponent}
+        {path: 'nuevo', component: TutorNuevoComponent},
+        {path: 'editar/:id', component: TutorNuevoComponent}
       ]
   },
   { path: 'evaluacion', component: EvaluacionComponent }

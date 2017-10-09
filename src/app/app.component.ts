@@ -19,6 +19,10 @@ export class AppComponent implements AfterViewInit {
     icon: 'supervisor_account',
     route: '/tutores',
     title: 'Tutores',
+  },{
+    icon: 'insert_chart',
+    route: '/tutoria',
+    title: 'Tutoría',
   }, {
     icon: 'playlist_add_check',
     route: '/evaluacion',

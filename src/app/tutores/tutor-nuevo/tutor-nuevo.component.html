@@ -1,0 +1,33 @@
+<mat-toolbar>
+  <div layout="row" layout-align="start center" flex>
+    <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
+          <mat-icon>arrow_back</mat-icon>
+      </button>
+    <span>Nuevo Tutor</span>
+    <span flex></span>
+    <button mat-icon-button><mat-icon>settings</mat-icon></button>
+  </div>
+</mat-toolbar>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Registro de Tutor</mat-card-title>
+    <mat-card-subtitle>Registrar a nuevo Tutor</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div layout-gt-sm='row' layout='col'>
+      <div flex=50>
+        <mat-form-field>
+          <input matInput required type="text" [(ngModel)]="tutor.nombre" placeholder="Nombre" name="tutor.nombre">
+        </mat-form-field>
+      </div>
+      <div flex=50>
+        <mat-form-field>
+          <input matInput required type="text" [(ngModel)]="tutor.curp" placeholder="CURP" name="tutor.curp">
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions align="start|end">
+    <button mat-button (click)="guardar(tutor)">Guardar</button>
+  </mat-card-actions>
+</mat-card>

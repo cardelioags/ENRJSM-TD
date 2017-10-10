@@ -8,7 +8,7 @@ var AccionSchema = new Schema ({
     objetivo: String,
     fecha_inicio: Date,
     fecha_termio: Date,
-    observaciones: [],
+    observaciones: [String],
     total_concluido: {type:Number, max:100, min:0},
 })
 
@@ -25,7 +25,7 @@ var TutoriasSchema = new Schema ({
     alumno: {type:Schema.Types.ObjectId, ref:'Alumno'},
     tutor: {type:Schema.Types.ObjectId, ref:'Tutor'},
     ultima_modificacion: Date,
-    plan: []
+    plan: [PlanSchema]
 
 })
 

@@ -20,9 +20,9 @@ export class AppComponent implements AfterViewInit {
     route: '/tutores',
     title: 'Tutores',
   },{
-    icon: 'insert_chart',
+    icon: 'school',
     route: '/tutoria',
-    title: 'Tutoría',
+    title: 'Tutorías',
   }, {
     icon: 'playlist_add_check',
     route: '/evaluacion',

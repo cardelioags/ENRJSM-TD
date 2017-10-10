@@ -8,6 +8,8 @@ import { AlumnosComponent } from "./alumnos/alumnos/alumnos.component";
 import { MainTutoresComponent } from "./tutores/main.tutores.component";
 import { TutoresComponent } from "./tutores/tutores/tutores.component";
 import { TutorNuevoComponent } from "./tutores/tutor-nuevo/tutor-nuevo.component";
+import { MainTutoriaComponent } from "./tutoria/main-tutoria.component";
+import { PersonalComponent } from "./personal/personal.component";
 import { EvaluacionComponent } from "./evaluacion/evaluacion.component";
 
 const routes: Routes = [
@@ -28,6 +30,8 @@ const routes: Routes = [
         {path: 'editar/:id', component: TutorNuevoComponent}
       ]
   },
+  { path: 'tutoria', component: MainTutoriaComponent},
+  { path: 'personal', component: PersonalComponent},
   { path: 'evaluacion', component: EvaluacionComponent }
 ];
 

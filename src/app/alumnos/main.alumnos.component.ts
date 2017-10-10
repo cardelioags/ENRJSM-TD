@@ -9,12 +9,12 @@ import { TdMediaService } from "@covalent/core";
 })
 export class MainAlumnosComponent implements AfterViewInit {
   navmenu: Object[] = [{
-    icon: 'looks_one',
+    icon: 'group',
     route: '.',
     title: 'Alumnos',
     description: 'Alumnos',
   }, {
-    icon: 'looks_two',
+    icon: 'playlist_add_check',
     route: '.',
     title: 'Calificaciones',
     description: 'Calificaciones',

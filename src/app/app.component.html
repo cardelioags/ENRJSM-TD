@@ -1,7 +1,7 @@
-<td-layout>
-  <td-navigation-drawer flex sidenavTitle="ENRJSM - Tutoría y Evaluación" name="Firstname Lastname" email="firstname.lastname@company.com">
+<td-layout *ngIf="aspectoBool">
+  <td-navigation-drawer  flex sidenavTitle="ENRJSM - Tutoría y Evaluación" name="Firstname Lastname" email="firstname.lastname@company.com">
     <mat-nav-list>
-      <a *ngFor="let item of routes" mat-list-item [routerLink]="[item.route]"><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+      <a *ngFor="let item of routes" tdLayoutToggle mat-list-item [routerLink]="[item.route]"><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
     </mat-nav-list>
     <div td-navigation-drawer-menu>
       <mat-nav-list>
@@ -28,3 +28,4 @@
     </td-layout-footer>
   </td-layout-nav>
 </td-layout>
+<router-outlet *ngIf="!aspectoBool"></router-outlet>

@@ -1,10 +1,12 @@
 import { Component, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { TdMediaService } from '@covalent/core';
+import { AspectoService } from "../services/aspecto.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [ AspectoService ]
 })
 export class AppComponent implements AfterViewInit {
   routes: Object[] = [{
@@ -19,7 +21,7 @@ export class AppComponent implements AfterViewInit {
     icon: 'supervisor_account',
     route: '/tutores',
     title: 'Tutores',
-  },{
+  }, {
     icon: 'school',
     route: '/tutoria',
     title: 'Tutorías',
@@ -31,6 +33,10 @@ export class AppComponent implements AfterViewInit {
     icon: 'insert_chart',
     route: '/reportes',
     title: 'Reportes',
+  }, {
+    icon: 'security',
+    route: '/administracion',
+    title: 'Administración',
   },
   ];
   usermenu: Object[] = [{
@@ -47,40 +53,20 @@ export class AppComponent implements AfterViewInit {
     title: 'Sign out',
   },
   ];
-  navmenu: Object[] = [{
-    icon: 'looks_one',
-    route: '.',
-    title: 'First item',
-    description: 'Item description',
-  }, {
-    icon: 'looks_two',
-    route: '.',
-    title: 'Second item',
-    description: 'Item description',
-  }, {
-    icon: 'looks_3',
-    route: '.',
-    title: 'Third item',
-    description: 'Item description',
-  }, {
-    icon: 'looks_4',
-    route: '.',
-    title: 'Fourth item',
-    description: 'Item description',
-  }, {
-    icon: 'looks_5',
-    route: '.',
-    title: 'Fifth item',
-    description: 'Item description',
-  },
-  ];
+
+  aspectoBool=true;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef,
-    public media: TdMediaService) { }
-
+    public media: TdMediaService,
+    private aspecto: AspectoService) { }
   ngAfterViewInit(): void {
     // broadcast to all listener observables when loading the page
-    
+    this.aspecto.pantalla_completaObs
+    .map((res:boolean) => res)
+    .subscribe(res => {
+      console.log(res);
+      console.log(res);
+    })
     /*setTimeout(() => { // workaround since MatSidenav has issues redrawing at the beggining
       this.media.broadcast();
       this._changeDetectorRef.detectChanges();

@@ -25,9 +25,15 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 const alumnosRoutes = require('./server/routes/alumnos');
-const tutoresRoutes = require('./server/routes/tutores')
+const tutoresRoutes = require('./server/routes/tutores');
+const personalRoutes = require('./server/routes/personal');
 
-app.use('/api', [alumnosRoutes, tutoresRoutes]);
+
+app.use('/api', [
+  alumnosRoutes, 
+  tutoresRoutes,
+  personalRoutes
+]);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));

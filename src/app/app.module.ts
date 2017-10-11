@@ -52,8 +52,9 @@ import { TutoresComponent } from './tutores/tutores/tutores.component';
 import { TutorNuevoComponent } from './tutores/tutor-nuevo/tutor-nuevo.component';
 import { MainTutoriaComponent } from './tutoria/main-tutoria.component';
 import { AdministracionComponent } from './administracion/administracion.component';
-import { PersonalComponent } from './personal/personal.component';
+import { PersonalComponent } from './administracion/personal/personal.component';
 import { TutoradosComponent } from './tutoria/tutorados/tutorados.component';
+import { RolesComponent } from './administracion/roles/roles.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { TutoradosComponent } from './tutoria/tutorados/tutorados.component';
     AdministracionComponent,
     PersonalComponent,
     TutoradosComponent,
+    RolesComponent,
   ],
   imports: [
     HttpModule,

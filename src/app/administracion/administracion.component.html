@@ -1,3 +1,20 @@
 <p>
   administracion works!
 </p>
+<td-layout-manage-list #manageList [opened]="media.registerQuery('gt-sm') | async" [mode]="(media.registerQuery('gt-sm') | async) ? 'side' :  'over'"
+[sidenavWidth]="(media.registerQuery('gt-xs') | async) ? '257px' : '100%'">
+<mat-toolbar td-sidenav-content>
+  <span>Administración</span>
+</mat-toolbar>
+<mat-nav-list td-sidenav-content [tdLayoutManageListClose]="!media.query('gt-sm')">
+  <ng-template let-item let-last="last" ngFor [ngForOf]="navmenu">
+    <a mat-list-item [routerLink]="[ item.route ]">
+      <mat-icon matListIcon>{{item.icon}}</mat-icon> {{item.title}}
+    </a>
+  </ng-template>
+</mat-nav-list>
+<router-outlet></router-outlet>
+<td-layout-footer-inner>
+  Optional inner footer
+</td-layout-footer-inner>
+</td-layout-manage-list>

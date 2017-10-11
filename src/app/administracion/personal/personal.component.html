@@ -3,16 +3,17 @@
       <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
           <mat-icon>arrow_back</mat-icon>
       </button>
-      <span>Lista de Personal</span>
+      <span>Lista de Tutores</span>
       <span flex></span>
       <button mat-icon-button><mat-icon>settings</mat-icon></button>
+      <button mat-icon-button (click)="cambiaAspecto()"><mat-icon>aspect_ratio</mat-icon></button>
     </div>
   </mat-toolbar>
   <mat-card>
     <mat-card-content>
        <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
         <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
-              <span class="md-title">Tutores Registrados</span>
+              <span class="md-title">Personal Registrado</span>
         </span>
         <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
               <span *ngIf="(selectable && !selectedRows.length) || !selectable" class="md-title"></span>

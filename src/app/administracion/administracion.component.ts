@@ -24,6 +24,11 @@ export class AdministracionComponent implements AfterViewInit {
     title: 'Plan/Materias',
     description: 'Catálogo de Materias',
   }, {
+    icon: 'perm_identity',
+    route: '/administracion/roles',
+    title: 'Roles/Permisos',
+    description: 'Administración de Roles y Permisos',
+  }, {
     icon: 'build',
     route: '.',
     title: 'Configuración',

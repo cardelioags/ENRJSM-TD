@@ -1,0 +1,2 @@
+.\mongoimport -d enrjsm-te -c personal --type csv --file "C:\Users\card_\Doc
+uments\Angular2\ENRJSM2\bds\Personal\personal.csv" --headerline

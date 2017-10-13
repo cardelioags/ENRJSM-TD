@@ -5,6 +5,6 @@ var Schema = mongoose.Schema;
 var OpcionesSchema = new Schema({
     descripcion: String,
     clave: String,
-    menu: mongoose.
+    menu: {type: mongoose.SchemaTypes.ObjectId, Ref:'Menu'}
 })
 

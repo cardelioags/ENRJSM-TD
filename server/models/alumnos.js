@@ -10,6 +10,7 @@ var AlumnosSchema = new Schema({
     grado: String,
     grupo: String,
     matricula: String,
+    tutor: { type: mongoose.SchemaTypes.ObjectId, ref:'Personal'}
 }, {collection: 'alumnos'})
 
 

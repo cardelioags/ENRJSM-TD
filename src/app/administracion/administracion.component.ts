@@ -14,6 +14,11 @@ export class AdministracionComponent implements AfterViewInit {
     title: 'Personal',
     description: 'Personal',
   }, {
+    icon: 'person_add',
+    route: '/administracion/personal/nuevo',
+    title: 'Nuevo Personal',
+    description: 'Añadir nuevo personal',
+  },{
     icon: 'face',
     route: '.',
     title: 'Usuarios',

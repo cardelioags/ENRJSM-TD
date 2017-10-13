@@ -17,11 +17,12 @@ router.route('/personal')
             res.json(tutor_res);
         });
     })
+
 router.route('/personal/:id')
     .get((req, res) => {
-        Personal.findById(req.params.id, (err, tutor)=>{
+        Personal.findById(req.params.id, (err, personal)=>{
             if(err) console.log(err);
-            res.json(tutor);
+            res.json(personal);
         })
     })
 

@@ -4,12 +4,7 @@ var Schema = mongoose.Schema;
 const Alumno = require('./alumnos');
 
 var TutoresSchema = new Schema({
-    nombre: {type: String, required: [true, 'El nombre del tutor es requerido']},
-    nombres: String,
-    prim_apell: String,
-    segu_apell: String,
-    curp: {type:String, unique:true},
-    especialidad: String,
+    tutor: {type:Schema.Types.ObjectId, ref:'personal'},
     tutorados: [
         {
             tutorado: {type:Schema.Types.ObjectId, ref:'Alumno'},

@@ -55,6 +55,7 @@ import { AdministracionComponent } from './administracion/administracion.compone
 import { PersonalComponent } from './administracion/personal/personal.component';
 import { TutoradosComponent } from './tutoria/tutorados/tutorados.component';
 import { RolesComponent } from './administracion/roles/roles.component';
+import { MenusComponent } from './administracion/menus/menus.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { RolesComponent } from './administracion/roles/roles.component';
     PersonalComponent,
     TutoradosComponent,
     RolesComponent,
+    MenusComponent,
   ],
   imports: [
     HttpModule,

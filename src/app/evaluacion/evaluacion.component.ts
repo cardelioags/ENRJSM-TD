@@ -11,29 +11,24 @@ export class EvaluacionComponent implements AfterViewInit {
   navmenu: Object[] = [{
     icon: 'group',
     route: '.',
-    title: 'Alumnos',
+    title: 'Instrumentos',
     description: 'Alumnos',
   }, {
     icon: 'playlist_add_check',
     route: '.',
-    title: 'Calificaciones',
+    title: 'Nuevo Instrumento',
     description: 'Calificaciones',
   }, {
     icon: 'looks_3',
     route: '.',
-    title: 'Third item',
-    description: 'Item description',
+    title: 'Aplicaciones',
+    description: 'Aplicaciones',
   }, {
-    icon: 'looks_4',
+    icon: 'looks_3',
     route: '.',
-    title: 'Fourth item',
-    description: 'Item description',
-  }, {
-    icon: 'looks_5',
-    route: '.',
-    title: 'Fifth item',
-    description: 'Item description',
-  },
+    title: 'Nueva Aplicación',
+    description: 'Nueva Aplicación',
+  }
   ];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef,

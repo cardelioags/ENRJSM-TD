@@ -1,27 +1,32 @@
 import { Component, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { TdDataTableService, TdDataTableSortingOrder, ITdDataTableSortChangeEvent, ITdDataTableColumn } from '@covalent/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { ModalUsuarioComponent } from "../modal-usuario/modal-usuario.component"
 import { IPageChangeEvent } from '@covalent/core';
-import { RolesService } from "../../../services/roles.service";
-import { AspectoService } from "../../../services/aspecto.service";
+import { PersonalService } from "../../../../services/personal.service";
+import { AspectoService } from "../../../../services/aspecto.service";
 
 @Component({
   //changeDetection: ChangeDetectionStrategy.Default,
-  selector: 'app-roles',
-  templateUrl: './roles.component.html',
-  styleUrls: ['./roles.component.css'],
-  providers: [RolesService, AspectoService]
+  selector: 'app-usuarios',
+  templateUrl: './usuarios.component.html',
+  styleUrls: ['./usuarios.component.css'],
+  providers: [PersonalService, AspectoService]
 })
-export class RolesComponent implements AfterViewInit {
+export class UsuariosComponent implements AfterViewInit {
 
   columns: ITdDataTableColumn[] = [
-    { name: '_id', label: 'Opciones'},
-    { name: 'descripcion', label: 'Descripcion', sortable: true, width: 300},
-    { name: 'permisos', label: 'Permisos', width: 200 },
-    { name: 'opciones', label: 'Opciones', width: 250 },    
-    { name: 'observacion', label: 'Observación', width: 300},
+    { name: '_id', label: 'Opciones' },
+    { name: 'usuario', label: 'Usuario' },
+    { name: 'contrasena', label: 'Contraseña' },
+    { name: 'nombre', label: 'Nombre', sortable: true, width: 300 },
+    { name: 'curp', label: 'CURP', width: 200 },
+    { name: 'email', label: 'Correo', width: 250 },
+    { name: 'funcion', label: 'Función' },
+    { name: 'observacion', label: 'Observación', width: 300 },
   ];
 
-  data: any[] = []; 
+  data: any[] = [];
 
   filteredData: any[] = this.data;
   filteredTotal: number = this.data.length;
@@ -30,35 +35,47 @@ export class RolesComponent implements AfterViewInit {
   fromRow: number = 1;
   currentPage: number = 1;
   pageSize: number = 50;
-  sortBy: string = 'descripcion';
+  sortBy: string = 'nombre';
   selectedRows: any[] = [];
   selectable: true;
-  multiple: true; 
+  multiple: true;
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   constructor(
-    private _dataTableService: TdDataTableService, 
-    private rolesSrv: RolesService,
+    private _dataTableService: TdDataTableService,
+    private personalSrv: PersonalService,
     private chDet: ChangeDetectorRef,
-    public aspectoBool: AspectoService
+    public aspectoBool: AspectoService,
+    public dialog: MatDialog
   ) { }
+  animal: string;
+  name: string;
+
+  openDialog(): void {
+    let dialogRef = this.dialog.open(ModalUsuarioComponent, {
+      width: '700px',
+      data: { name: this.name, animal: this.animal }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  } s
 
   ngAfterViewInit(): void {
-    this.rolesSrv.todos()
+    this.personalSrv.todos()
       .subscribe(res => {
         this.data = res;
-        this.selectable = true;
-        this.multiple = true;
-        console.log(res);
         this.filter();
       })
   }
 
-  seleccionados(){
+  seleccionados() {
     console.log(this.selectedRows);
   }
 
-  cambiaAspecto(){
+  cambiaAspecto() {
     this.aspectoBool.toggleRelacion();
   }
 

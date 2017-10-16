@@ -1,0 +1,42 @@
+<mat-toolbar>
+  <div layout="row" layout-align="start center" flex>
+    <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>{{titulo}}
+      <b *ngIf="id !== undefined">{{": " + rol.titulo}}</b>
+    </span>
+    <span flex></span>
+    <button mat-icon-button>
+      <mat-icon>settings</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<mat-card>
+  <form>
+    <mat-card-header>
+      <mat-card-title>Registro de Rol</mat-card-title>
+      <mat-card-subtitle>{{titulo}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field layout="row">
+        <input matInput placeholder="Titulo del Rol" [(ngModel)]="rol.titulo" name="rol.titulo" required>
+      </mat-form-field>
+      <mat-form-field layout="row" style="width:100%">
+          <input matInput placeholder="Breve descripción del Rol" [(ngModel)]="rol.descripcion" name="rol.descripcion" required>
+        </mat-form-field>
+      <ul>
+        <li *ngFor="let menu of menus; let menu_idx = index">{{menu.titulo}}
+          <ul>
+            <li *ngFor="let submenu of menu.submenus; let sub_idx = index">
+              <mat-checkbox (change)="seleccion(menu_idx, sub_idx)" [checked]="submenu.permiso" color="primary">{{submenu.titulo}}</mat-checkbox>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </mat-card-content>
+    <mat-card-actions align="start|end">
+      <button mat-button (click)="guardar(rol)">Guardar</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

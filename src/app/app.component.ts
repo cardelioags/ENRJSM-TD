@@ -64,8 +64,7 @@ export class AppComponent implements AfterViewInit {
     this.aspecto.pantalla_completaObs
     .map((res:boolean) => res)
     .subscribe(res => {
-      console.log(res);
-      console.log(res);
+
     })
     /*setTimeout(() => { // workaround since MatSidenav has issues redrawing at the beggining
       this.media.broadcast();

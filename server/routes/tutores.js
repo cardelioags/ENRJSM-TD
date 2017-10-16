@@ -5,21 +5,26 @@ const Tutores = require('../models/tutores')
 
 router.route('/tutores')
     .get((req, res) => {
-        Tutores.find((err, tutores)=> {
+        Tutores.find()
+        .populate('tutor')
+        .exec((err, tutores) => {
             if(err) res.sendStatus(err);
             res.json(tutores);
         })
     })
     .post((req, res) => {
-        var tutor = new Tutores(req.body)
+        var tutor = new Tutores();
+        tutor.tutor = req.body._id;
         tutor.save((err, tutor_res)=>{
-            if (err) return console.log(err);
+            if (err) return res.json(err);
             res.json(tutor_res);
         });
     })
 router.route('/tutores/:id')
     .get((req, res) => {
-        Tutores.findById(req.params.id, (err, tutor)=>{
+        Tutores.findOne({_id:req.params.id})
+        .populate('tutor')
+        .exec((err, tutor)=>{
             if(err) console.log(err);
             res.json(tutor);
         })

@@ -11,7 +11,15 @@ var AlumnosSchema = new Schema({
     grupo: String,
     matricula: String,
     tutor: { type: mongoose.SchemaTypes.ObjectId, ref:'Personal'}
-}, {collection: 'alumnos'})
+}, {
+    collection: 'alumnos',
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true }
+})
 
+AlumnosSchema.virtual('gradogrupo').get(function(){
+    return "G:"+this.grado + this.grupo;
+})
 
 module.exports = mongoose.model('Alumno', AlumnosSchema)
+

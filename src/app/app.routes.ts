@@ -14,7 +14,12 @@ import { AdministracionComponent } from "./administracion/administracion.compone
 import { MainPersonalComponent } from "./administracion/personal/main-personal.component";
 import { PersonalComponent } from "./administracion/personal/personal/personal.component"
 import { PersonalNuevoComponent } from "./administracion/personal/personal-nuevo/personal-nuevo.component";
-import { RolesComponent } from "./administracion/roles/roles.component";
+import { MainRolesComponent } from "./administracion/roles/main-roles..component";
+import { RolesComponent } from "./administracion/roles/roles/roles.component";
+import { FormRolComponent } from "./administracion/roles/form-rol/form-rol.component";
+import { MainUsuariosComponent } from "./administracion/usuarios/main-usuarios.component";
+import { UsuariosComponent } from "./administracion/usuarios/usuarios/usuarios.component";
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -40,14 +45,27 @@ const routes: Routes = [
     path: 'administracion', component: AdministracionComponent, children:
     [
       {
-        path: 'personal', component: MainPersonalComponent,children:
+        path: 'personal', component: MainPersonalComponent, children:
+        [
+          { path: '', component: PersonalComponent },
+          { path: 'nuevo', component: PersonalNuevoComponent },
+          { path: 'editar/:id', component: PersonalNuevoComponent }
+        ]
+      },
+      {
+        path: '', component: MainUsuariosComponent, children:
+        [
+          { path: 'usuarios', component: UsuariosComponent }
+        ]
+      },
+      {
+        path: 'roles', component: MainRolesComponent, children:
           [
-            {path: '', component: PersonalComponent},
-            {path: 'nuevo', component: PersonalNuevoComponent},
-            {path: 'editar/:id', component: PersonalNuevoComponent}
+            {path: '', component:RolesComponent},
+            {path: 'nuevo', component: FormRolComponent},
+            {path: 'editar/:id', component: FormRolComponent}
           ]
       },
-      { path: 'roles', component: RolesComponent },
     ]
   }
 ];

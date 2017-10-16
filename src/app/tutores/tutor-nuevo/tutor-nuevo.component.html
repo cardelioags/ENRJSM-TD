@@ -1,33 +1,41 @@
 <mat-toolbar>
   <div layout="row" layout-align="start center" flex>
     <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
-          <mat-icon>arrow_back</mat-icon>
-      </button>
-    <span>{{titulo}}<b *ngIf="id !== undefined">{{": " + tutor.nombre}}</b></span>
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>{{titulo}}
+      <b *ngIf="id !== undefined">{{": " + tutor.nombre}}</b>
+    </span>
     <span flex></span>
-    <button mat-icon-button><mat-icon>settings</mat-icon></button>
+    <button mat-icon-button>
+      <mat-icon>settings</mat-icon>
+    </button>
   </div>
 </mat-toolbar>
 <mat-card>
   <mat-card-header>
     <mat-card-title>Registro de Tutor</mat-card-title>
-    <mat-card-subtitle>Registrar a nuevo Tutor</mat-card-subtitle>
+    <mat-card-subtitle>{{titulo}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <div layout-gt-sm='row' layout='col'>
-      <div flex=50>
-        <mat-form-field>
-          <input matInput required type="text" [(ngModel)]="tutor.nombre" placeholder="Nombre" name="tutor.nombre">
+      <div flex=100>
+        <mat-form-field style="width:100%">
+          <input type="text" matInput placeholder="Busqueda de Personal" [matAutocomplete]="auto" [(ngModel)]="valPersonal" (ngModelChange)="filter(valPersonal)">
         </mat-form-field>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedOpt($event)" [displayWith]="selectedPer">
+          <mat-option *ngFor="let persona of filteredOptions" [value]="persona">
+            {{ persona.nombre +" - "+ persona.curp }}
+          </mat-option>
+        </mat-autocomplete>
       </div>
-      <div flex=50>
-        <mat-form-field>
-          <input matInput required type="text" [(ngModel)]="tutor.curp" placeholder="CURP" name="tutor.curp">
-        </mat-form-field>
-      </div>
+    </div>
+    <div layout-gt-sm='row' layout='col' *ngIf="persona">
+      <span flex=100><b>Función:</b> {{persona.funcion}}</span>
+      <span flex=100><b>Actividad: </b> {{persona.observacion}}</span> 
     </div>
   </mat-card-content>
   <mat-card-actions align="start|end">
-    <button mat-button (click)="guardar(tutor)">Guardar</button>
+    <button mat-button (click)="guardar()">Guardar</button>
   </mat-card-actions>
 </mat-card>

@@ -12,14 +12,13 @@ import { AlumnosService } from "../../../services/alumnos.service";
 export class AlumnosComponent implements AfterViewInit {
 
   columns: ITdDataTableColumn[] = [
-    { name: 'matricula', label: 'Matrícula', sortable: true, width:150},
-    { name: 'nombre', label: 'Nombre', sortable: true, width: 300},
+    { name: 'matricula', label: 'Matrícula', sortable: true, width: 150 },
+    { name: 'nombre', label: 'Nombre', sortable: true, width: 300 },
     { name: 'curp', label: 'CURP', width: 250 },
-    { name: 'grado', label: 'Grado', hidden: false },
-    { name: 'grupo', label: 'Grupo', sortable: true},
+    { name: 'gradogrupo', label: 'Grado/Grupo', sortable: true },
   ];
 
-  data: any[] = []; 
+  data: any[] = [];
 
   filteredData: any[] = this.data;
   filteredTotal: number = this.data.length;
@@ -30,12 +29,13 @@ export class AlumnosComponent implements AfterViewInit {
   pageSize: number = 50;
   sortBy: string = 'nombre';
   selectedRows: any[] = [];
-  selectable: true;
-  multiple: true; 
+  selectable = true;
+  multiple = true;
+  clickable = true;
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   constructor(
-    private _dataTableService: TdDataTableService, 
+    private _dataTableService: TdDataTableService,
     private alumnos: AlumnosService,
     private chDet: ChangeDetectorRef
   ) { }
@@ -44,14 +44,11 @@ export class AlumnosComponent implements AfterViewInit {
     this.alumnos.todos()
       .subscribe(res => {
         this.data = res;
-        this.selectable = true;
-        this.multiple = true;
-        console.log(res);
         this.filter();
       })
   }
 
-  seleccionados(){
+  seleccionados() {
     console.log(this.selectedRows);
   }
 

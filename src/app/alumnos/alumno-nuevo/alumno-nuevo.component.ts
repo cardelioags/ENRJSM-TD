@@ -10,10 +10,10 @@ import { Location } from '@angular/common';
   providers: [AlumnosService]
 })
 export class AlumnoNuevoComponent implements OnInit {
-  private tutor = {nombre: ''};
+  public alumno = {nombre: '', curp:''};
   private sub: any;
-  private id: any;
-  private titulo = ""
+  public id: any;
+  public titulo = ""
 
   constructor(
     private alumnosSrv: AlumnosService, 
@@ -27,19 +27,19 @@ export class AlumnoNuevoComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       if (this.id !== undefined){
-        this.titulo = 'Editar Tutor';
+        this.titulo = 'Editar Alumno';
         this.alumnosSrv.alumno(this.id)
         .subscribe((res:any) => {
-          this.tutor = res;
+          this.alumno = res;
         })
       }else{
-        this.titulo = 'Nuevo Tutor';
+        this.titulo = 'Nuevo Alumno';
       }
     })
   }
 
   guardar(){
-    this.alumnosSrv.nuevo(this.tutor)
+    this.alumnosSrv.nuevo(this.alumno)
       .subscribe(res => console.log(res));
   }
 

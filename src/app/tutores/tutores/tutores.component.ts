@@ -29,8 +29,9 @@ export class TutoresComponent implements AfterViewInit {
   pageSize: number = 50;
   sortBy: string = 'nombre';
   selectedRows: any[] = [];
-  selectable: true;
-  multiple: true; 
+  selectable = true;
+  multiple= true;
+  clickable= true; 
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   constructor(
@@ -43,9 +44,6 @@ export class TutoresComponent implements AfterViewInit {
     this.tutores.todos()
       .subscribe(res => {
         this.data = res;
-        this.selectable = true;
-        this.multiple = true;
-        console.log(res);
         this.filter();
       })
   }

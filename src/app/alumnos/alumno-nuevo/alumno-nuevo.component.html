@@ -3,31 +3,31 @@
     <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
           <mat-icon>arrow_back</mat-icon>
       </button>
-    <span>{{titulo}}<b *ngIf="id !== undefined">{{": " + tutor.nombre}}</b></span>
+    <span>{{titulo}}<b *ngIf="id !== undefined">{{": " + alumno.nombre}}</b></span>
     <span flex></span>
     <button mat-icon-button><mat-icon>settings</mat-icon></button>
   </div>
 </mat-toolbar>
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Registro de Tutor</mat-card-title>
-    <mat-card-subtitle>Registrar a nuevo Tutor</mat-card-subtitle>
+    <mat-card-title>Registro de Alumno</mat-card-title>
+    <mat-card-subtitle>Registrar a nuevo Alumno</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <div layout-gt-sm='row' layout='col'>
       <div flex=50>
         <mat-form-field>
-          <input matInput required type="text" [(ngModel)]="tutor.nombre" placeholder="Nombre" name="tutor.nombre">
+          <input matInput required type="text" [(ngModel)]="alumno.nombre" placeholder="Nombre" name="alumno.nombre">
         </mat-form-field>
       </div>
       <div flex=50>
         <mat-form-field>
-          <input matInput required type="text" [(ngModel)]="tutor.curp" placeholder="CURP" name="tutor.curp">
+          <input matInput required type="text" [(ngModel)]="alumno.curp" placeholder="CURP" name="alumno.curp">
         </mat-form-field>
       </div>
     </div>
   </mat-card-content>
   <mat-card-actions align="start|end">
-    <button mat-button (click)="guardar(tutor)">Guardar</button>
+    <button mat-button (click)="guardar()">Guardar</button>
   </mat-card-actions>
 </mat-card>

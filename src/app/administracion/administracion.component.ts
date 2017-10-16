@@ -20,7 +20,7 @@ export class AdministracionComponent implements AfterViewInit {
     description: 'Añadir nuevo personal',
   },{
     icon: 'face',
-    route: '.',
+    route: '/administracion/usuarios',
     title: 'Usuarios',
     description: 'Usuarios',
   }, {
@@ -33,7 +33,12 @@ export class AdministracionComponent implements AfterViewInit {
     route: '/administracion/roles',
     title: 'Roles/Permisos',
     description: 'Administración de Roles y Permisos',
-  }, {
+  },{
+    icon: 'perm_identity',
+    route: '/administracion/roles/nuevo',
+    title: 'Nuevo Rol',
+    description: 'Crear nuevo Rol',
+  },{
     icon: 'build',
     route: '.',
     title: 'Configuración',

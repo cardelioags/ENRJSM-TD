@@ -10,10 +10,10 @@ import { Location } from '@angular/common';
   providers: [PersonalService]
 })
 export class PersonalNuevoComponent implements OnInit {
-  private personal = {nombre: ''};
+  public personal = {nombre: ''};
   private sub: any;
-  private id: any;
-  private titulo = ""
+  public id: any;
+  public titulo = ""
 
   constructor(
     private personalSrv: PersonalService, 
@@ -23,7 +23,6 @@ export class PersonalNuevoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(location.href);
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       if (this.id !== undefined){

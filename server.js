@@ -27,12 +27,14 @@ app.use(express.static(path.join(__dirname, 'dist')));
 const alumnosRoutes = require('./server/routes/alumnos');
 const tutoresRoutes = require('./server/routes/tutores');
 const personalRoutes = require('./server/routes/personal');
+const rolesRoutes = require('./server/routes/roles');
 
 
 app.use('/api', [
   alumnosRoutes, 
   tutoresRoutes,
-  personalRoutes
+  personalRoutes,
+  rolesRoutes
 ]);
 
 app.get('*', (req, res) => {

@@ -5,8 +5,8 @@ import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class TutoresService {
-    private url = 'http://localhost:3000/api/tutores';
+export class UsuariosService {
+    private url = 'http://localhost:3000/api/usuarios';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }

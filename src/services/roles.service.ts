@@ -10,7 +10,7 @@ export class RolesService {
     private headers = new Headers({'Content-Type':'application/json'});
 
         constructor(private http: Http){}
-        tutor(id): Observable<any[]>{
+        rol(id): Observable<any[]>{
             return this.http.get(this.url + `/${id}`)
             .map(res => res.json());
         }
@@ -18,8 +18,12 @@ export class RolesService {
             return this.http.get(this.url)
             .map( res => res.json());
         }
-        nuevo(tutor): Observable<any[]>{
-            return this.http.post(this.url, tutor, {headers:this.headers})
+        nuevo(rol): Observable<any[]>{
+            return this.http.post(this.url, rol, {headers:this.headers})
             .map( res => res.json());
+        }
+        editar(rol): Observable<any>{
+            return this.http.put(this.url, rol, {headers: this.headers})
+            .map(res => res.json());
         }
 }

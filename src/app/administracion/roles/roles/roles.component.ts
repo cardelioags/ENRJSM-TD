@@ -1,25 +1,22 @@
 import { Component, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { TdDataTableService, TdDataTableSortingOrder, ITdDataTableSortChangeEvent, ITdDataTableColumn } from '@covalent/core';
 import { IPageChangeEvent } from '@covalent/core';
-import { PersonalService } from "../../../../services/personal.service";
+import { RolesService } from "../../../../services/roles.service"
 import { AspectoService } from "../../../../services/aspecto.service";
 
 @Component({
   //changeDetection: ChangeDetectionStrategy.Default,
-  selector: 'app-personal',
-  templateUrl: './personal.component.html',
-  styleUrls: ['./personal.component.css'],
-  providers: [PersonalService, AspectoService]
+  selector: 'app-roles',
+  templateUrl: './roles.component.html',
+  styleUrls: ['./roles.component.css'],
+  providers: [RolesService, AspectoService]
 })
-export class PersonalComponent implements AfterViewInit {
+export class RolesComponent implements AfterViewInit {
 
   columns: ITdDataTableColumn[] = [
-    { name: '_id', label: 'Opciones'},
-    { name: 'nombre', label: 'Nombre', sortable: true, width: 300},
-    { name: 'curp', label: 'CURP', width: 200 },
-    { name: 'email', label: 'Correo', width: 250 },    
-    { name: 'funcion', label: 'Función'},
-    { name: 'observacion', label: 'Observación', width: 300},
+    { name: '_id', label: 'Opciones', width: 150},
+    { name: 'titulo', label: 'Título', sortable: true, width: 200},
+    { name: 'descripcion', label: 'Descripcion', sortable: true, width: 300},    
   ];
 
   data: any[] = []; 
@@ -31,21 +28,22 @@ export class PersonalComponent implements AfterViewInit {
   fromRow: number = 1;
   currentPage: number = 1;
   pageSize: number = 50;
-  sortBy: string = 'nombre';
+  sortBy: string = 'descripcion';
   selectedRows: any[] = [];
-  selectable: true;
-  multiple: true; 
+  selectable = true;
+  multiple = true; 
+  clickable = true;
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   constructor(
     private _dataTableService: TdDataTableService, 
-    private personalSrv: PersonalService,
+    private rolesSrv: RolesService,
     private chDet: ChangeDetectorRef,
     public aspectoBool: AspectoService
   ) { }
 
   ngAfterViewInit(): void {
-    this.personalSrv.todos()
+    this.rolesSrv.todos()
       .subscribe(res => {
         this.data = res;
         this.filter();

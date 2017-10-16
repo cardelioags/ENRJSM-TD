@@ -1,8 +1,8 @@
 import { Component, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { TdDataTableService, TdDataTableSortingOrder, ITdDataTableSortChangeEvent, ITdDataTableColumn } from '@covalent/core';
 import { IPageChangeEvent } from '@covalent/core';
-import { PersonalService } from "../../../services/personal.service";
-import { AspectoService } from "../../../services/aspecto.service";
+import { PersonalService } from "../../../../services/personal.service";
+import { AspectoService } from "../../../../services/aspecto.service";
 
 @Component({
   //changeDetection: ChangeDetectionStrategy.Default,

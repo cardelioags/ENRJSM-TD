@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-const Alumno = require('./alumnos');
+
 
 var PersonalSchema = new Schema({
     nombre: {type: String, required: [true, 'El nombre del personal es requerido']},

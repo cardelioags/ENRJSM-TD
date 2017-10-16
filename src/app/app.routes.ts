@@ -11,7 +11,9 @@ import { TutorNuevoComponent } from "./tutores/tutor-nuevo/tutor-nuevo.component
 import { MainTutoriaComponent } from "./tutoria/main-tutoria.component";
 import { EvaluacionComponent } from "./evaluacion/evaluacion.component";
 import { AdministracionComponent } from "./administracion/administracion.component";
-import { PersonalComponent } from "./administracion/personal/personal.component";
+import { MainPersonalComponent } from "./administracion/personal/main-personal.component";
+import { PersonalComponent } from "./administracion/personal/personal/personal.component"
+import { PersonalNuevoComponent } from "./administracion/personal/personal-nuevo/personal-nuevo.component";
 import { RolesComponent } from "./administracion/roles/roles.component";
 
 const routes: Routes = [
@@ -36,10 +38,17 @@ const routes: Routes = [
   { path: 'evaluacion', component: EvaluacionComponent },
   {
     path: 'administracion', component: AdministracionComponent, children:
-      [
-        { path: 'personal', component: PersonalComponent},
-        { path: 'roles', component: RolesComponent},        
-      ]
+    [
+      {
+        path: 'personal', component: MainPersonalComponent,children:
+          [
+            {path: '', component: PersonalComponent},
+            {path: 'nuevo', component: PersonalNuevoComponent},
+            {path: 'editar/:id', component: PersonalNuevoComponent}
+          ]
+      },
+      { path: 'roles', component: RolesComponent },
+    ]
   }
 ];
 

@@ -6,9 +6,13 @@
       <a (click)="fired()" md-raised-button color="primary" >Fired</a>
       <div layout-gt-xs="row" layout="column">
         <div flex>
-          <h3>Mi cuenta</h3>
-          <h4>{{nombre}}</h4>
-          <h4>{{rolTitulo}}</h4>
+          <h3>Bienvenido(a) al Sistema de Tutoría y Evaluación de la Escuela Normal Rural "Justo Sierra Méndez"</h3>
+          <h4>La información de tu cuenta es la siguiente:</h4>
+          <h4>Nombre: {{persona.nombre}}</h4>
+          <h4>CURP: {{persona.curp}}</h4>
+          <h4>Correo Electrónico: {{persona.email}}</h4>
+          <h4>Función: {{persona.funcion}}</h4>
+          <h4>Actividad: {{persona.observacion}}</h4>
         </div>
         
       </div>

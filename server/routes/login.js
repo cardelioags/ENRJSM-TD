@@ -5,7 +5,6 @@ const Usuarios = require('../models/usuarios');
 
 router.route("/login")
 .post((req, res) => {
-    console.log(req.body);
     Usuarios.findOne({ usuario: req.body.usr, contrasena: req.body.pass })
         .populate('personal')
         .populate('rol')

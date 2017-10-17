@@ -1,21 +1,27 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { LoginService } from '../../services/login.service'
+import { PersonalService } from "../../services/personal.service";
 
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.css']
+  styleUrls: ['./perfil.component.css'],
+  providers: [PersonalService]
 })
 export class PerfilComponent implements OnInit, AfterViewInit {
+  
+  persona: any = {};
 
-  usuario
-
-  constructor(private _login: LoginService) { }
+  constructor(private _login: LoginService, private _personal: PersonalService) { }
   ngOnInit() {
     console.log(this._login.usuario);
   }
   ngAfterViewInit() {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
+    this._personal.personal(this._login.getUsr().personal)
+    .subscribe(res => {
+      this.persona = res;
+      console.log(res)
+    })
+
   }
 }

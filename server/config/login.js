@@ -19,12 +19,14 @@ module.exports = {
 
     },
     genToken: function (usuario) {
+        console.log(usuario);
         if(usuario){
         var payload = {
             usuario: usuario.nombre,
             id: usuario._id,
             rol: usuario.rol.titulo,
-            permisos: usuario.rol.permisos
+            permisos: usuario.rol.permisos,
+            personal: usuario.personal._id
         }
         return jwt.sign(payload, conf.ks, { expiresIn: '20m' })
         }

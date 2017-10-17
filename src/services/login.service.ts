@@ -22,4 +22,7 @@ export class LoginService {
   logout() {
     localStorage.clear();
   }
+  getUsr() {
+    return this.jwt.decodeToken(localStorage.getItem('token'));
+  }
 }

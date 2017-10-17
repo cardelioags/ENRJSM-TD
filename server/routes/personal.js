@@ -17,6 +17,24 @@ router.route('/personal')
             res.json(tutor_res);
         });
     })
+    .put((req, res) => {
+        Personal.findById(req.body._id, (err, persona) =>{
+            if (err) res.status(500).send(err)
+            else {
+                persona.nombre = req.body.nombre.toUpperCase();
+                persona.funcion = req.body.funcion.toUpperCase();
+                persona.observacion = req.body.observacion;
+                persona.email = req.body.email.toLowerCase();
+                persona.curp = req.body.curp.toUpperCase();                
+                persona.save((err, rol) =>{
+                    if(err) res.status(500).send(err);
+                    else {
+                        res.json(persona);
+                    }
+                })
+            }
+        })
+    })
 
 router.route('/personal/:id')
     .get((req, res) => {

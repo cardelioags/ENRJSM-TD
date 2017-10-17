@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Asignar Tutorados</h1>
+<div mat-dialog-content>
+  <div layout-gt-sm='row' layout='col'>
+    <div flex=100>
+      <mat-form-field style="width:100%">
+        <input type="text" matInput placeholder="Busqueda de Tutores" [matAutocomplete]="auto" [(ngModel)]="valPersonal" (ngModelChange)="filter(valPersonal)">
+      </mat-form-field>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedOpt($event)" [displayWith]="selectedPer">
+        <mat-option *ngFor="let tutor of filteredOptions" [value]="tutor">
+          {{ tutor.nombre +" - "+ tutor.curp }}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+  </div>
+  <div layout-gt-sm='row' layout='col' *ngIf="tutor">
+    <span flex=100>
+      <b>Función:</b> {{tutor.funcion}}</span>
+    <span flex=100>
+      <b>Actividad: </b> {{tutor.observacion}}</span>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="accent" [mat-dialog-close]="{tutor:tutor, tutorados: data}" tabindex="2">Asignar</button>
+  <button mat-raised-button (click)="onNoClick()" tabindex="-1">Cancelar</button>
+</div>

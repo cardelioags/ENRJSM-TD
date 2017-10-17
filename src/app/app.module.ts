@@ -38,11 +38,16 @@ import {
   MatTooltipModule,
   MatPseudoCheckboxModule
 } from "@angular/material";
-
+/**
+ * Móludo Auth JWT
+ */
+import { AuthModule } from "./auth.module";
 /**
  * Servicios
  */
 import { AlumnosService } from "../services/alumnos.service";
+import { UsuariosService } from "../services/usuarios.service";
+import { LoginService } from "../services/login.service";
 /**
  * Componentes  
  * */
@@ -69,6 +74,12 @@ import { MainUsuariosComponent } from './administracion/usuarios/main-usuarios.c
 import { UsuariosComponent } from './administracion/usuarios/usuarios/usuarios.component';
 import { ModalUsuarioComponent } from './administracion/usuarios/modal-usuario/modal-usuario.component';
 import { FormRolComponent } from './administracion/roles/form-rol/form-rol.component';
+import { TutoriasComponent } from './tutoria/tutorias/tutorias.component';
+import { AsignacionComponent } from './tutoria/asignacion/asignacion.component';
+import { ModalAsignacionComponent } from './tutoria/asignacion/modal-asignacion/modal-asignacion.component';
+import { PerfilComponent } from './perfil/perfil.component';
+
+
 
 @NgModule({
   declarations: [
@@ -94,7 +105,11 @@ import { FormRolComponent } from './administracion/roles/form-rol/form-rol.compo
     UsuariosComponent,
     ModalUsuarioComponent,
     MainRolesComponent,
-    FormRolComponent
+    FormRolComponent,
+    TutoriasComponent,
+    AsignacionComponent,
+    ModalAsignacionComponent,
+    PerfilComponent
   ],
   imports: [
     HttpModule,
@@ -123,15 +138,19 @@ import { FormRolComponent } from './administracion/roles/form-rol/form-rol.compo
     MatAutocompleteModule,
     MatDialogModule,
     MatTooltipModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    AuthModule
   ],
   providers: [
     TdMediaService,
     AlumnosService,
-    MatDialog
+    MatDialog,
+    UsuariosService,
+    LoginService
   ],
   entryComponents: [
-    ModalUsuarioComponent
+    ModalUsuarioComponent,
+    ModalAsignacionComponent
   ],
   bootstrap: [AppComponent]
 })

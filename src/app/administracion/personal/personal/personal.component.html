@@ -36,6 +36,9 @@
           <button mat-icon-button [routerLink]="[ '/administracion/personal/editar', value ]">
             <mat-icon class="md-24">edit</mat-icon>
           </button>
+          <button mat-icon-button (click)="openDialog(value)">
+            <mat-icon class="md-24">person_add</mat-icon>
+          </button>
         </ng-template>
       </td-data-table>
       <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">

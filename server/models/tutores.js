@@ -25,5 +25,11 @@ TutoresSchema.virtual('nombre').get(function(){
 TutoresSchema.virtual('curp').get(function(){
     return this.tutor.curp;
 })
+TutoresSchema.virtual('funcion').get(function(){
+    return this.tutor.funcion;
+})
+TutoresSchema.virtual('observacion').get(function(){
+    return this.tutor.observacion;
+})
 
 module.exports = mongoose.model('Tutor', TutoresSchema)

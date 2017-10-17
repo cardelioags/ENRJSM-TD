@@ -10,12 +10,12 @@ import { TdMediaService } from "@covalent/core";
 export class MainTutoriaComponent implements AfterViewInit {
   navmenu: Object[] = [{
     icon: 'compare_arrows',
-    route: '/tutorias/tutorados',
+    route: '/tutoria',
     title: 'Asignación',
     description: 'Asignación de Tutor-Tutorado',
   },{
     icon: 'list',
-    route: '/tutorias',
+    route: '/tutoria',
     title: 'Tutorados',
     description: 'Muestra todos los tutores',
   }, {

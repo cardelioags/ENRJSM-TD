@@ -24,9 +24,12 @@
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "@covalent/core": "^1.0.0-beta.8-1",
+    "angular2-jwt": "^0.2.3",
     "core-js": "^2.4.1",
     "express": "^4.16.1",
+    "jsonwebtoken": "^8.1.0",
     "mongoose": "^4.12.0",
+    "morgan": "^1.9.0",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },

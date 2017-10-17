@@ -1,11 +1,15 @@
 <mat-toolbar>
   <div layout="row" layout-align="start center" flex>
     <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
-          <mat-icon>arrow_back</mat-icon>
-      </button>
-    <span>{{titulo}}<b *ngIf="id !== undefined">{{": " + personal.nombre}}</b></span>
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>{{titulo}}
+      <b *ngIf="id !== undefined">{{": " + personal.nombre}}</b>
+    </span>
     <span flex></span>
-    <button mat-icon-button><mat-icon>settings</mat-icon></button>
+    <button mat-icon-button>
+      <mat-icon>settings</mat-icon>
+    </button>
   </div>
 </mat-toolbar>
 <mat-card>
@@ -17,12 +21,31 @@
     <div layout-gt-sm='row' layout='col'>
       <div flex=50>
         <mat-form-field>
-          <input matInput required type="text" [(ngModel)]="personal.nombre" placeholder="Nombre" name="personal.nombre">
+          <input matInput required type="text" [(ngModel)]="personal.nombre" style="text-transform:uppercase;" placeholder="Nombre" name="personal.nombre">
         </mat-form-field>
       </div>
       <div flex=50>
         <mat-form-field>
-          <input matInput required type="text" [(ngModel)]="personal.curp" placeholder="CURP" name="personal.curp">
+          <input matInput required type="text" [(ngModel)]="personal.curp" style="text-transform:uppercase;" placeholder="CURP" name="personal.curp">
+        </mat-form-field>
+      </div>
+    </div>
+    <div layout-gt-sm='row' layout='col'>
+      <div flex=50>
+        <mat-form-field>
+          <input matInput required type="email" [(ngModel)]="personal.email" placeholder="email" name="personal.nombre">
+        </mat-form-field>
+      </div>
+      <div flex=50>
+        <mat-form-field>
+          <input matInput required type="text" [(ngModel)]="personal.funcion" style="text-transform:uppercase;" placeholder="Función" name="personal.funcion">
+        </mat-form-field>
+      </div>
+    </div>
+    <div layout-gt-sm='row' layout='col'>
+      <div flex=100>
+        <mat-form-field style="width:100%">
+          <input matInput required type="text" [(ngModel)]="personal.observacion" placeholder="Actividad" name="personal.onservacion">
         </mat-form-field>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { TdDataTableService, TdDataTableSortingOrder, ITdDataTableSortChangeEven
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { ModalUsuarioComponent } from "../modal-usuario/modal-usuario.component"
 import { IPageChangeEvent } from '@covalent/core';
+import { UsuariosService } from "../../../../services/usuarios.service";
 import { PersonalService } from "../../../../services/personal.service";
 import { AspectoService } from "../../../../services/aspecto.service";
 
@@ -11,7 +12,7 @@ import { AspectoService } from "../../../../services/aspecto.service";
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.css'],
-  providers: [PersonalService, AspectoService]
+  providers: [UsuariosService, AspectoService, PersonalService]
 })
 export class UsuariosComponent implements AfterViewInit {
 
@@ -20,10 +21,8 @@ export class UsuariosComponent implements AfterViewInit {
     { name: 'usuario', label: 'Usuario' },
     { name: 'contrasena', label: 'Contraseña' },
     { name: 'nombre', label: 'Nombre', sortable: true, width: 300 },
-    { name: 'curp', label: 'CURP', width: 200 },
+    { name: 'rolTitulo', label: 'Rol', width: 200 },
     { name: 'email', label: 'Correo', width: 250 },
-    { name: 'funcion', label: 'Función' },
-    { name: 'observacion', label: 'Observación', width: 300 },
   ];
 
   data: any[] = [];
@@ -43,6 +42,7 @@ export class UsuariosComponent implements AfterViewInit {
 
   constructor(
     private _dataTableService: TdDataTableService,
+    private _usuarios: UsuariosService,
     private personalSrv: PersonalService,
     private chDet: ChangeDetectorRef,
     public aspectoBool: AspectoService,
@@ -51,21 +51,27 @@ export class UsuariosComponent implements AfterViewInit {
   animal: string;
   name: string;
 
-  openDialog(): void {
+  openDialog(id): void {
     let dialogRef = this.dialog.open(ModalUsuarioComponent, {
       width: '700px',
-      data: { name: this.name, animal: this.animal }
+      data: {personal:id}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
+      if (result !== undefined){
+        this._usuarios.nuevo(result)
+        .subscribe(res => {
+          console.log(res);
+        })
+      }
     });
-  } s
+  }
 
   ngAfterViewInit(): void {
-    this.personalSrv.todos()
+    this._usuarios.todos()
       .subscribe(res => {
+        console.log(res);
         this.data = res;
         this.filter();
       })

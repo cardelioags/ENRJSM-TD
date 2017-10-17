@@ -28,13 +28,20 @@ const alumnosRoutes = require('./server/routes/alumnos');
 const tutoresRoutes = require('./server/routes/tutores');
 const personalRoutes = require('./server/routes/personal');
 const rolesRoutes = require('./server/routes/roles');
+const usuariosRoutes = require('./server/routes/usuarios');
+const tutoriaRoutes = require('./server/routes/tutoria');
+const loginRoutes = require('./server/routes/login');
+
 
 
 app.use('/api', [
   alumnosRoutes, 
   tutoresRoutes,
   personalRoutes,
-  rolesRoutes
+  rolesRoutes,
+  tutoriaRoutes,
+  usuariosRoutes,
+  loginRoutes
 ]);
 
 app.get('*', (req, res) => {

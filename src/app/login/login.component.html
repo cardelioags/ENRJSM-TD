@@ -13,16 +13,16 @@
           <mat-card-subtitle>Por favor proporciona los datos de acceso</mat-card-subtitle>
           <mat-card-content>
             <mat-form-field>
-              <input matInput placeholder="Usuario" required>
+              <input matInput placeholder="Usuario" required [(ngModel)]="usr" name="usr" required>
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder="Contraseña" type="password" required>
+                <input matInput placeholder="Contraseña" type="password" [(ngModel)]="pass" name="pass" required>
               </mat-form-field>
             </mat-card-content>
           <mat-card-actions>
             <div layout="row">
               <span flex></span>
-              <a mat-raised-button color="primary" fxFlexAlign="end">Ingresar</a>
+              <a mat-raised-button color="primary" fxFlexAlign="end" (click)="login(usr,pass)">Ingresar</a>
             </div>
           </mat-card-actions>
         </mat-card>

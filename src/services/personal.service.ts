@@ -22,4 +22,8 @@ export class PersonalService {
             return this.http.post(this.url, personal, {headers:this.headers})
             .map( res => res.json());
         }
+        editar(personal): Observable<any[]>{
+            return this.http.put(this.url, personal, {headers: this.headers})
+            .map(res => res.json());
+        }
 }

@@ -1,11 +1,17 @@
 <td-layout>
-  <td-navigation-drawer  flex sidenavTitle="ENRJSM" name="Firstname Lastname" email="firstname.lastname@company.com">
+  <td-navigation-drawer flex sidenavTitle="ENRJSM" name="Firstname Lastname" email="firstname.lastname@company.com">
     <mat-nav-list>
-      <a *ngFor="let item of routes" tdLayoutToggle mat-list-item [routerLink]="[item.route]"><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+      <div *ngFor="let item of routes">
+        <a tdLayoutToggle mat-list-item [routerLink]="[item.route]">
+          <mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+      </div>
     </mat-nav-list>
     <div td-navigation-drawer-menu>
       <mat-nav-list>
-        <a *ngFor="let item of usermenu" mat-list-item><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+        <div *ngFor="let item of usermenu">
+          <a mat-list-item>
+            <mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+        </div>
       </mat-nav-list>
     </div>
   </td-navigation-drawer>
@@ -14,10 +20,14 @@
       <button mat-icon-button td-menu-button tdLayoutToggle>
         <mat-icon>menu</mat-icon>
       </button>
-      <a [routerLink]="['/']"><img src="../assets/enrjsmBanner70.png" alt="logo"></a>
+      <a [routerLink]="['/']">
+        <img src="../assets/enrjsmBanner70.png" alt="logo">
+      </a>
       <span [routerLink]="['/']" class="cursor-pointer"> ENRJSM</span>
       <span flex></span>
-      <a *ngFor="let item of routes" mat-icon-button [matTooltip]="item.title" [routerLink]="[item.route]"><mat-icon>{{item.icon}}</mat-icon></a>
+      <a *ngFor="let item of routes" mat-icon-button  [matTooltip]="item.title" [routerLink]="[item.route]">
+        <mat-icon>{{item.icon}}</mat-icon>
+      </a>
     </div>
     <router-outlet></router-outlet>
     <td-layout-footer>

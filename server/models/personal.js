@@ -4,14 +4,15 @@ var Schema = mongoose.Schema;
 
 
 var PersonalSchema = new Schema({
-    nombre: {type: String, required: [true, 'El nombre del personal es requerido']},
-    nombres: String,
-    prim_apell: String,
-    segu_apell: String,
-    curp: {type:String, unique:true},
+    nombre: {type: String, required: [true, 'El nombre del personal es requerido'],uppercase:true},
+    nombres: {type:String, uppercase:true},
+    prim_apell: {type:String, uppercase:true},
+    segu_apell: {type:String, uppercase:true},
+    curp: {type:String, uppercase:true, required:true},
     observacion: String,
-    email: String,
-    usuario: String
+    funcion:{type:String, uppercase:true},
+    email: {type:String, lowercase:true},
+    usuario: {type:String, lowercase:true}
 }, {collection: 'personal'})
 
 

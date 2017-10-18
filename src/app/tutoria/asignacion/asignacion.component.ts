@@ -17,9 +17,9 @@ export class AsignacionComponent implements AfterViewInit {
 
   columns: ITdDataTableColumn[] = [
     { name: 'nomTutor', label: 'Tutor', width: 300 },
-    { name: 'matricula', label: 'Matrícula', sortable: true, width: 150 },
-    { name: 'nombre', label: 'Nombre', sortable: true, width: 300 },
-    { name: 'curp', label: 'CURP', width: 250 },
+    //{ name: 'matricula', label: 'Matrícula', sortable: true, width: 150 },
+    { name: 'nomAlu', label: 'Nombre', sortable: true, width: 300 },
+    //{ name: 'curp', label: 'CURP', width: 250 },
     { name: 'gradogrupo', label: 'Grado/Grupo', sortable: true },
   ];
 
@@ -32,7 +32,7 @@ export class AsignacionComponent implements AfterViewInit {
   fromRow: number = 1;
   currentPage: number = 1;
   pageSize: number = 50;
-  sortBy: string = 'nombre';
+  sortBy: string = 'nomAlu';
   selectedRows: any[] = [];
   selectable = true;
   multiple = true;
@@ -51,7 +51,7 @@ export class AsignacionComponent implements AfterViewInit {
     this.todos();
   }
   todos() {
-    this.alumnos.todos()
+    this._tutorias.todos()
       .subscribe(res => {
         this.data = res;
         this.filter();

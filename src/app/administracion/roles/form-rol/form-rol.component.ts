@@ -99,7 +99,6 @@ export class FormRolComponent implements OnInit {
       this.rol.permisos = this.menus;
       this._roles.editar(this.rol)
       .subscribe(res => {
-        console.log(res);
         this._router.navigate(['administracion/roles']);
       })
     } else {

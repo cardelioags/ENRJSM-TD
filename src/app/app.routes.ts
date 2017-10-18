@@ -21,6 +21,9 @@ import { FormRolComponent } from "./administracion/roles/form-rol/form-rol.compo
 import { MainUsuariosComponent } from "./administracion/usuarios/main-usuarios.component";
 import { UsuariosComponent } from "./administracion/usuarios/usuarios/usuarios.component";
 import { PerfilComponent } from "./perfil/perfil.component"
+import { TutoradosComponent } from "./tutoria/tutorados/tutorados.component"
+import { MisTutoradosComponent } from "./tutoria/mis-tutorados/mis-tutorados.component"
+
 
 
 const routes: Routes = [
@@ -46,6 +49,8 @@ const routes: Routes = [
     path: 'tutoria', component: MainTutoriaComponent, children:
       [
         {path: '', component: AsignacionComponent },
+        {path: 'tutorados', component: TutoradosComponent },
+        {path: 'mistutorados', component: MisTutoradosComponent },
       ]
   },
   { path: 'evaluacion', component: EvaluacionComponent },

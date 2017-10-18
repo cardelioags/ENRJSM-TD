@@ -15,10 +15,15 @@ export class MainTutoriaComponent implements AfterViewInit {
     description: 'Asignación de Tutor-Tutorado',
   },{
     icon: 'list',
-    route: '/tutoria',
-    title: 'Tutorados',
+    route: '/tutoria/tutorados',
+    title: 'Lista de Tutorados',
     description: 'Muestra todos los tutores',
-  }, {
+  },{
+    icon: 'list',
+    route: '/tutoria/mistutorados',
+    title: 'Mis Tutorados',
+    description: 'Muestra los tutorados asignados',
+  },{
     icon: 'person_add',
     route: '/tutorias/registro',
     title: 'Tutorías',

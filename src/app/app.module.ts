@@ -67,6 +67,7 @@ import { AdministracionComponent } from './administracion/administracion.compone
 import { MainPersonalComponent } from './administracion/personal/main-personal.component';
 import { PersonalNuevoComponent } from "./administracion/personal/personal-nuevo/personal-nuevo.component";
 import { TutoradosComponent } from './tutoria/tutorados/tutorados.component';
+import { MisTutoradosComponent } from './tutoria/mis-tutorados/mis-tutorados.component';
 import { MainRolesComponent } from "./administracion/roles/main-roles..component";
 import { RolesComponent } from './administracion/roles/roles/roles.component';
 import { PersonalComponent } from './administracion/personal/personal/personal.component';
@@ -99,6 +100,7 @@ import { PerfilComponent } from './perfil/perfil.component';
     MainPersonalComponent,
     PersonalNuevoComponent,
     TutoradosComponent,
+    MisTutoradosComponent,
     RolesComponent,
     PersonalComponent,
     MainUsuariosComponent,

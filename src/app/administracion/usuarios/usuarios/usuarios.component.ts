@@ -62,7 +62,7 @@ export class UsuariosComponent implements AfterViewInit {
       if (result !== undefined){
         this._usuarios.nuevo(result)
         .subscribe(res => {
-          console.log(res);
+
         })
       }
     });
@@ -71,7 +71,6 @@ export class UsuariosComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this._usuarios.todos()
       .subscribe(res => {
-        console.log(res);
         this.data = res;
         this.filter();
       })

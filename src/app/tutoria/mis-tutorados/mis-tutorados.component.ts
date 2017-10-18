@@ -1,31 +1,30 @@
 import { Component, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { TdDataTableService, TdDataTableSortingOrder, ITdDataTableSortChangeEvent, ITdDataTableColumn } from '@covalent/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import {ModalUsuarioComponent} from "../../usuarios/modal-usuario/modal-usuario.component";
 import { IPageChangeEvent } from '@covalent/core';
-import { PersonalService } from "../../../../services/personal.service";
-import { UsuariosService } from "../../../../services/usuarios.service";
-import { AspectoService } from "../../../../services/aspecto.service";
+import { AlumnosService } from "../../../services/alumnos.service";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ModalAsignacionComponent } from "../asignacion/modal-asignacion/modal-asignacion.component"
+import { TutoriasService } from "../../../services/tutorias.service";
+import { LoginService } from "../../../services/login.service";
 
 @Component({
   //changeDetection: ChangeDetectionStrategy.Default,
-  selector: 'app-personal',
-  templateUrl: './personal.component.html',
-  styleUrls: ['./personal.component.css'],
-  providers: [PersonalService, AspectoService, UsuariosService]
+  selector: 'app-mis-tutorados',
+  templateUrl: './mis-tutorados.component.html',
+  styleUrls: ['./mis-tutorados.component.css'],
+  providers: [TutoriasService, LoginService]
 })
-export class PersonalComponent implements AfterViewInit {
+export class MisTutoradosComponent implements AfterViewInit {
 
   columns: ITdDataTableColumn[] = [
-    { name: '_id', label: 'Opciones'},
-    { name: 'nombre', label: 'Nombre', sortable: true, width: 300},
-    { name: 'curp', label: 'CURP', width: 200 },
-    { name: 'email', label: 'Correo', width: 250 },    
-    { name: 'funcion', label: 'Función'},
-    { name: 'observacion', label: 'Observación', width: 300},
+    { name: 'nomTutor', label: 'Tutor', width: 300 },
+    { name: 'matricula', label: 'Matrícula', sortable: true, width: 150 },
+    { name: 'nombre', label: 'Nombre', sortable: true, width: 300 },
+    { name: 'curp', label: 'CURP', width: 250 },
+    { name: 'gradogrupo', label: 'Grado/Grupo', sortable: true },
   ];
 
-  data: any[] = []; 
+  data: any[] = [];
 
   filteredData: any[] = this.data;
   filteredTotal: number = this.data.length;
@@ -36,49 +35,49 @@ export class PersonalComponent implements AfterViewInit {
   pageSize: number = 50;
   sortBy: string = 'nombre';
   selectedRows: any[] = [];
-  selectable= true;
-  multiple= false; 
-  clickable= true;
+  selectable = true;
+  multiple = true;
+  clickable = true;
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   constructor(
-    private _dataTableService: TdDataTableService, 
-    private personalSrv: PersonalService,
+    private _dataTableService: TdDataTableService,
+    private alumnos: AlumnosService,
     private chDet: ChangeDetectorRef,
-    public aspectoBool: AspectoService,
-    private dialog: MatDialog,
-    private _usuarios: UsuariosService
+    public dialog: MatDialog,
+    private _tutorias: TutoriasService,
+    private _login: LoginService
   ) { }
 
   ngAfterViewInit(): void {
-    this.personalSrv.todos()
+    this.todos();
+  }
+  todos() {
+    this._tutorias.query({tutor: this._login.getUsr()._id })
       .subscribe(res => {
         this.data = res;
         this.filter();
       })
   }
-  openDialog(id): void {
-    let dialogRef = this.dialog.open(ModalUsuarioComponent, {
+
+  seleccionados() {
+    console.log(this.selectedRows);
+  }
+  openDialog(): void {
+    let dialogRef = this.dialog.open(ModalAsignacionComponent, {
       width: '700px',
-      data: {personal:id}
+      data: this.selectedRows
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if (result !== undefined){
-        this._usuarios.nuevo(result)
-        .subscribe(res => {
-
-        })
+      if (result !== undefined) {
+        this._tutorias.asignar(result)
+          .subscribe(res => {
+            this.todos();
+            this.selectedRows = [];
+          })
       }
     });
-  }
-  seleccionados(){
-    console.log(this.selectedRows);
-  }
-
-  cambiaAspecto(){
-    this.aspectoBool.toggleRelacion();
   }
 
   sort(sortEvent: ITdDataTableSortChangeEvent): void {

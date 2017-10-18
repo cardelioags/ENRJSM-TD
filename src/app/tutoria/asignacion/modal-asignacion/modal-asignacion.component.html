@@ -20,6 +20,6 @@
   </div>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="accent" [mat-dialog-close]="{tutor:tutor, tutorados: data}" tabindex="2">Asignar</button>
+  <button mat-raised-button color="accent" [mat-dialog-close]="{tutor:tutor._id, tutorados: data}" tabindex="2">Asignar</button>
   <button mat-raised-button (click)="onNoClick()" tabindex="-1">Cancelar</button>
 </div>

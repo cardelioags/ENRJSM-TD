@@ -40,7 +40,7 @@ export class AlumnoNuevoComponent implements OnInit {
 
   guardar(){
     this.alumnosSrv.nuevo(this.alumno)
-      .subscribe(res => console.log(res));
+      .subscribe(res => {});
   }
 
 }

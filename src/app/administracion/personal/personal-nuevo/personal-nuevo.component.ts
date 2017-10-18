@@ -60,7 +60,6 @@ export class PersonalNuevoComponent implements OnInit {
     } else {
       this.personalSrv.editar(this.personal)
       .subscribe(res => {
-        console.log(res);
         this.router.navigate(['/administracion/personal'])
       })
     }

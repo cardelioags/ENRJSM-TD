@@ -19,7 +19,6 @@ module.exports = {
 
     },
     genToken: function (usuario) {
-        console.log(usuario);
         if(usuario){
         var payload = {
             usuario: usuario.nombre,

@@ -6,21 +6,19 @@ const db = require('./server/config/db');
 
 const app = express();
 
-allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-    if ('OPTIONS' === req.method) {
-      res.sendStatus(200);
-    } else {
-      next();
-    }
-  };
-  
-  app.use(allowCrossDomain);
+allowCrossDomain = function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+  if ('OPTIONS' === req.method) {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+}; app.use(allowCrossDomain);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ extended: false, limit: '50mb' }));
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -29,13 +27,13 @@ const tutoresRoutes = require('./server/routes/tutores');
 const personalRoutes = require('./server/routes/personal');
 const rolesRoutes = require('./server/routes/roles');
 const usuariosRoutes = require('./server/routes/usuarios');
-const tutoriaRoutes = require('./server/routes/tutoria');
+const tutoriaRoutes = require('./server/routes/tutorias');
 const loginRoutes = require('./server/routes/login');
 
 
 
 app.use('/api', [
-  alumnosRoutes, 
+  alumnosRoutes,
   tutoresRoutes,
   personalRoutes,
   rolesRoutes,
@@ -47,7 +45,7 @@ app.use('/api', [
 app.use(express.static(path.join(__dirname, 'server/fotos_perfil/')))
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
 })
 
 const port = process.env.PORT || '3000';
@@ -55,6 +53,6 @@ app.set('port', port);
 
 const server = http.createServer(app);
 
-server.listen(port, ()=>{
-    console.log(`La aplicación está corriendo en localhost:${port}`);
+server.listen(port, () => {
+  console.log(`La aplicación está corriendo en localhost:${port}`);
 })

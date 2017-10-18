@@ -18,6 +18,10 @@ export class TutoriasService {
             return this.http.get(this.url)
             .map( res => res.json());
         }
+        query(data): Observable<any[]>{
+            return this.http.post(this.url, data, {headers:this.headers})
+            .map( res => res.json());
+        }
         nuevo(tutoria): Observable<any[]>{
             return this.http.post(this.url, tutoria, {headers:this.headers})
             .map( res => res.json());

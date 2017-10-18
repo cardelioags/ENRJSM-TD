@@ -1,17 +1,20 @@
 const express = require('express');
 const router = express.Router();
 
-const Tutorias = require('../models/tutoria')
+const Tutorias = require('../models/tutorias')
 const Alumnos = require('../models/alumnos')
-const Tutores = require('../models/personal')
+const Personal = require('../models/personal')
 
 
 router.route('/tutorias')
     .get((req, res) => {
-        Tutorias.find((err, roles) => {
-            if (err) res.sendStatus(err);
-            res.json(roles);
-        })
+        Tutorias.find()
+            .populate('alumno')
+            .populate('tutor')
+            .exec((err, tutorias) => {
+                if (err) res.sendStatus(err);
+                res.json(tutorias);
+            })
     })
     .post((req, res) => {
         var rol = new Roles(req.body)
@@ -42,20 +45,14 @@ router.route('/tutorias/asignar')
         let tutorados = req.body.tutorados;
         let tutor = req.body.tutor;
         for (let i in tutorados) {
-            Alumnos.findById(tutorados[i]._id, function (err, alumno) {
-                if (err) res.status(500).send(err)
-                else {
-                    alumno.tutor = tutor.tutor._id;
-                    alumno.save(function (err, alumno) {
-                        if (err) respuesta.push({ id: alumno._id, asignacion: false });
-                        else {
-                            if (alumno) respuesta.push({ id: alumno._id, asignacion: true });
-                        }
-                    })
-                }
+            Tutorias.update({ alumno: tutorados[i].alumno._id }, {
+                tutor: tutor
+            }, function (err, numAfect, rawResp) {
+                if (err) return err
+                if (i == (tutorados.length-1))
+                    res.send(i);
             });
         }
-        res.json(respuesta);
     })
 router.route('/tutorias/:id')
     .get((req, res) => {

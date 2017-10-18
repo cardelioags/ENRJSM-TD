@@ -2,7 +2,7 @@ import { Component, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy } 
 import { TdDataTableService, TdDataTableSortingOrder, ITdDataTableSortChangeEvent, ITdDataTableColumn } from '@covalent/core';
 import { IPageChangeEvent } from '@covalent/core';
 import { AlumnosService } from "../../../services/alumnos.service";
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ModalAsignacionComponent } from "../asignacion/modal-asignacion/modal-asignacion.component"
 import { TutoriasService } from "../../../services/tutorias.service";
 
@@ -16,7 +16,7 @@ import { TutoriasService } from "../../../services/tutorias.service";
 export class AsignacionComponent implements AfterViewInit {
 
   columns: ITdDataTableColumn[] = [
-    { name: 'nomTutor', label: 'Tutor', width: 300},
+    { name: 'nomTutor', label: 'Tutor', width: 300 },
     { name: 'matricula', label: 'Matrícula', sortable: true, width: 150 },
     { name: 'nombre', label: 'Nombre', sortable: true, width: 300 },
     { name: 'curp', label: 'CURP', width: 250 },
@@ -48,6 +48,9 @@ export class AsignacionComponent implements AfterViewInit {
   ) { }
 
   ngAfterViewInit(): void {
+    this.todos();
+  }
+  todos() {
     this.alumnos.todos()
       .subscribe(res => {
         this.data = res;
@@ -65,12 +68,14 @@ export class AsignacionComponent implements AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result !== undefined){
+      if (result !== undefined) {
         this._tutorias.asignar(result)
-        .subscribe(res => {
-          console.log(res);
-        })
-      } 
+          .subscribe(res => {
+            console.log(res);
+            this.todos();
+            this.selectedRows = [];
+          })
+      }
     });
   }
 

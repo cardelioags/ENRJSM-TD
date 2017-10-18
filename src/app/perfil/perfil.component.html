@@ -1,21 +1,26 @@
 <mat-card>
-    <mat-card-title>Escuela Normar Rural "Justo Sierra Méndez"</mat-card-title>
-    <mat-card-subtitle>Bienvenido(a) al módulo de tutoría.</mat-card-subtitle>
-    <mat-divider></mat-divider>
-    <mat-card-content >
-      <a (click)="fired()" md-raised-button color="primary" >Fired</a>
-      <div layout-gt-xs="row" layout="column">
-        <div flex>
-          <h3>Bienvenido(a) al Sistema de Tutoría y Evaluación de la Escuela Normal Rural "Justo Sierra Méndez"</h3>
-          <h4>La información de tu cuenta es la siguiente:</h4>
-          <h4>Nombre: {{persona.nombre}}</h4>
-          <h4>CURP: {{persona.curp}}</h4>
-          <h4>Correo Electrónico: {{persona.email}}</h4>
-          <h4>Función: {{persona.funcion}}</h4>
-          <h4>Actividad: {{persona.observacion}}</h4>
-        </div>
-        
+  <mat-card-title>Escuela Normar Rural "Justo Sierra Méndez"</mat-card-title>
+  <mat-card-subtitle>Bienvenido(a) al módulo de tutoría.</mat-card-subtitle>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <div layout-align="center" layout="row" layout-gt-sm="column center">
+      <div flex-gt-xs=30 flex=100>
+        <img [src]="persona._id+'.jpg'" onerror="this.src = 'http://localhost:3000/def.png'">
       </div>
-  
-    </mat-card-content>
-  </mat-card>
+    </div>
+    <div layout-align="center" layout="row" layout-gt-sm="column center"> 
+      <div flex-gt-xs=30 flex=100>
+        <mat-card class="top-max" style="border-radius:20px">
+          <mat-card-content class="bgc-blue-grey-400" style="border-radius:20px; color:white;">
+            <br>
+            <p>Nombre: {{persona.nombre}}</p>
+            <p>CURP: {{persona.curp}}</p>
+            <p>Correo Electrónico: {{persona.email}}</p>
+            <p>Función: {{persona.funcion}}</p>
+            <p>Actividad: {{persona.observacion}}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

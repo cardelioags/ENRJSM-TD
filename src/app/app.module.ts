@@ -79,6 +79,8 @@ import { TutoriasComponent } from './tutoria/tutorias/tutorias.component';
 import { AsignacionComponent } from './tutoria/asignacion/asignacion.component';
 import { ModalAsignacionComponent } from './tutoria/asignacion/modal-asignacion/modal-asignacion.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { CamaraComponent } from './camara/camara.component';
+import { TutoriaComponent } from './tutoria/tutoria/tutoria.component';
 
 
 
@@ -111,7 +113,9 @@ import { PerfilComponent } from './perfil/perfil.component';
     TutoriasComponent,
     AsignacionComponent,
     ModalAsignacionComponent,
-    PerfilComponent
+    PerfilComponent,
+    CamaraComponent,
+    TutoriaComponent
   ],
   imports: [
     HttpModule,
@@ -127,6 +131,7 @@ import { PerfilComponent } from './perfil/perfil.component';
     CovalentPagingModule,
     CovalentSearchModule,
     CovalentDialogsModule,
+    CovalentStepsModule,
     MatIconModule,
     MatListModule,
     MatCardModule,

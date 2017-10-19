@@ -41,10 +41,10 @@ TutoriasSchema.virtual('nomAlu').get(function(){
     return this.alumno.nombre;
 })
 TutoriasSchema.virtual('nomTutor').get(function(){
-    if (this.tutor !== undefined){
+    if (this.tutor !== undefined && this.tutor !== null){
         return this.tutor.nombre;    
     }
-    return "SIN ASIGNAR";
+    return "**Sin asignar**";
 })
 TutoriasSchema.virtual('gradogrupo').get(function(){
     return "G:"+this.alumno.grado + this.alumno.grupo;

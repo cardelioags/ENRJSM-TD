@@ -26,7 +26,7 @@ AlumnosSchema.virtual('nomTutor').get(function(){
     if (this.tutor){
         return this.tutor.nombre;
     }
-    return "Sin asignar";
+    return "**Sin asignar**";
 })
 
 module.exports = mongoose.model('Alumno', AlumnosSchema)

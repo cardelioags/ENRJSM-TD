@@ -31,8 +31,10 @@ export class MainTutoriaComponent implements AfterViewInit {
   }
   ];
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef,
-    public media: TdMediaService) { }
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    public media: TdMediaService,
+  ) { }
 
   ngAfterViewInit(): void {
     // broadcast to all listener observables when loading the page

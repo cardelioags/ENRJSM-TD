@@ -3,11 +3,13 @@
     <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
       <mat-icon>arrow_back</mat-icon>
     </button>
-    <span>Asignación de Tutores</span>
+    <span>Mis Tutoradas - </span>
     <!--<span flex></span>-->
     <button mat-icon-button>
-      <mat-icon>settings</mat-icon>
-      <a mat-raised-button (click)="openDialog()" color="primary" *ngIf="selectedRows.length > 0">Asignar a {{selectedRows.length}} alumnos seleccionados</a>
+      <a mat-raised-button [routerLink]="[ '/tutoria', selectedRows[0].alumno._id ]" color="accent" *ngIf="selectedRows.length > 0">Tutoría de {{selectedRows[0].nomAlu}}</a>
+      <button mat-icon-button (click)="seleccionados()">
+          <mat-icon class="md-24">pageview</mat-icon>
+      </button>
     </button>
   </div>
 </mat-toolbar>
@@ -15,7 +17,7 @@
   <mat-card-content>
     <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
       <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
-        <span class="md-title">Title here</span>
+        <span class="md-title">Tutoradas:</span>
       </span>
       <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
         <span *ngIf="(selectable && !selectedRows.length) || !selectable" class="md-title"></span>

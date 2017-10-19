@@ -16,9 +16,11 @@ import { TutoriasService } from "../../../services/tutorias.service";
 export class AsignacionComponent implements AfterViewInit {
 
   columns: ITdDataTableColumn[] = [
-    { name: 'nomTutor', label: 'Tutor', width: 300 },
+    { name: 'tutor._id', label: '', width:100},
+    { name: 'nomTutor', label: 'Tutor', width: 200 },
     //{ name: 'matricula', label: 'Matrícula', sortable: true, width: 150 },
-    { name: 'nomAlu', label: 'Nombre', sortable: true, width: 300 },
+    { name: 'id', label: '', width:100},
+    { name: 'nombre', label: 'Nombre', sortable: true, width: 200 },
     //{ name: 'curp', label: 'CURP', width: 250 },
     { name: 'gradogrupo', label: 'Grado/Grupo', sortable: true },
   ];
@@ -32,7 +34,7 @@ export class AsignacionComponent implements AfterViewInit {
   fromRow: number = 1;
   currentPage: number = 1;
   pageSize: number = 50;
-  sortBy: string = 'nomAlu';
+  sortBy: string = 'nombre';
   selectedRows: any[] = [];
   selectable = true;
   multiple = true;
@@ -41,7 +43,7 @@ export class AsignacionComponent implements AfterViewInit {
 
   constructor(
     private _dataTableService: TdDataTableService,
-    private alumnos: AlumnosService,
+    private _alumnos: AlumnosService,
     private chDet: ChangeDetectorRef,
     public dialog: MatDialog,
     private _tutorias: TutoriasService
@@ -51,7 +53,7 @@ export class AsignacionComponent implements AfterViewInit {
     this.todos();
   }
   todos() {
-    this._tutorias.todos()
+    this._alumnos.todos()
       .subscribe(res => {
         this.data = res;
         this.filter();
@@ -62,6 +64,7 @@ export class AsignacionComponent implements AfterViewInit {
     console.log(this.selectedRows);
   }
   openDialog(): void {
+    console.log(this.selectedRows);
     let dialogRef = this.dialog.open(ModalAsignacionComponent, {
       width: '700px',
       data: this.selectedRows
@@ -69,9 +72,9 @@ export class AsignacionComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
+        console.log(result);
         this._tutorias.asignar(result)
           .subscribe(res => {
-            console.log(res);
             this.todos();
             this.selectedRows = [];
           })

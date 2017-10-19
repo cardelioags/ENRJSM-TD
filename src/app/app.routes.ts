@@ -20,15 +20,18 @@ import { RolesComponent } from "./administracion/roles/roles/roles.component";
 import { FormRolComponent } from "./administracion/roles/form-rol/form-rol.component";
 import { MainUsuariosComponent } from "./administracion/usuarios/main-usuarios.component";
 import { UsuariosComponent } from "./administracion/usuarios/usuarios/usuarios.component";
-import { PerfilComponent } from "./perfil/perfil.component"
-import { TutoradosComponent } from "./tutoria/tutorados/tutorados.component"
-import { MisTutoradosComponent } from "./tutoria/mis-tutorados/mis-tutorados.component"
+import { PerfilComponent } from "./perfil/perfil.component";
+import { TutoradosComponent } from "./tutoria/tutorados/tutorados.component";
+import { MisTutoradosComponent } from "./tutoria/mis-tutorados/mis-tutorados.component";
+import { TutoriaComponent } from "./tutoria/tutoria/tutoria.component";
+import { CamaraComponent } from "./camara/camara.component";
 
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'perfil', component: PerfilComponent},
+  { path: 'perfil', component: PerfilComponent },
+  { path: 'camara', component: CamaraComponent },
   { path: 'login', component: LoginComponent },
   { path: 'reportes', component: ReportesComponent },
   {
@@ -47,12 +50,13 @@ const routes: Routes = [
   },
   {
     path: 'tutoria', component: MainTutoriaComponent, children:
-      [
-        {path: '', component: AsignacionComponent },
-        {path: 'tutorados', component: TutoradosComponent },
-        {path: 'mistutorados', component: MisTutoradosComponent },
-      ]
+    [
+      { path: '', component: AsignacionComponent },
+      { path: 'tutorados', component: TutoradosComponent },
+      { path: 'mistutorados', component: MisTutoradosComponent },
+    ]
   },
+  { path: 'tutoria/:id', component: TutoriaComponent },
   { path: 'evaluacion', component: EvaluacionComponent },
   {
     path: 'administracion', component: AdministracionComponent, children:

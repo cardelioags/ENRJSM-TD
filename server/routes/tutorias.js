@@ -45,21 +45,38 @@ router.route('/tutorias/asignar')
         let tutorados = req.body.tutorados;
         let tutor = req.body.tutor;
         for (let i in tutorados) {
-            Tutorias.update({ alumno: tutorados[i].alumno._id }, {
+            Alumnos.update({ _id: tutorados[i]._id },{
                 tutor: tutor
+            }, function(err, numAfect, rawResp){
+                if (err) console.log(err)
+            })
+            Tutorias.update({ alumno: tutorados[i]._id }, {
+                tutor: tutor
+            },{ 
+                upsert : true 
             }, function (err, numAfect, rawResp) {
-                if (err) return err
-                if (i == (tutorados.length-1))
+                if (err) console.log(err)
+                if (i == (tutorados.length - 1))
                     res.send(i);
             });
         }
     })
 router.route('/tutorias/:id')
     .get((req, res) => {
-        Roles.findById(req.params.id, (err, rol) => {
+        Tutorias.findOne({alumno:req.params.id})
+        .populate('alumno')
+        .exec((err, tutoria) => {
             if (err) console.log(err);
-            res.json(rol);
+            res.json(tutoria);
         })
     })
-
+router.route('/tutorias/tutor/:id')
+    .get((req, res) => {
+        Tutorias.find({ tutor: req.params.id })
+            .populate("alumno")
+            .exec((err, tutorias) => {
+                if (err) res.json(err);
+                res.json(tutorias);
+            })
+    })
 module.exports = router;

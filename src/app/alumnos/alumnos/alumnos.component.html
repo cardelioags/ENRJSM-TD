@@ -1,11 +1,13 @@
 <mat-toolbar style="position:fixed">
   <div layout="row" layout-align="start center" flex>
     <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
-        <mat-icon>arrow_back</mat-icon>
+      <mat-icon>arrow_back</mat-icon>
     </button>
     <span>Lista de alumnos</span>
     <span flex></span>
-    <button mat-icon-button><mat-icon>settings</mat-icon></button>
+    <button mat-icon-button>
+      <mat-icon>settings</mat-icon>
+    </button>
   </div>
 </mat-toolbar>
 <mat-card>
@@ -13,11 +15,11 @@
     <a mat-button (click)="seleccionados()">Items seleccionados {{selectedRows.length}}</a>
     <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
       <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
-            <span class="md-title">Title here</span>
+        <span class="md-title">Title here</span>
       </span>
       <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
-            <span *ngIf="(selectable && !selectedRows.length) || !selectable" class="md-title"></span>
-      <span *ngIf="selectedRows.length && selectable" class="md-body-1">{{selectedRows.length}} item(s) selected</span>
+        <span *ngIf="(selectable && !selectedRows.length) || !selectable" class="md-title"></span>
+        <span *ngIf="selectedRows.length && selectable" class="md-body-1">{{selectedRows.length}} item(s) selected</span>
       </span>
       <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Search here" (searchDebounce)="search($event)"
         flex>
@@ -27,6 +29,9 @@
     <h4>{{selectable}}</h4>
     <td-data-table #dataTable [data]="filteredData" [columns]="columns" [selectable]="selectable" [clickable]="clickable" [multiple]="multiple"
       [sortable]="true" [sortBy]="sortBy" [(ngModel)]="selectedRows" [sortOrder]="sortOrder" (sortChange)="sort($event)">
+      <ng-template tdDataTableTemplate="id" let-value="value">
+        <img [src]="value+'.jpg'" onerror="this.src = 'http://localhost:3000/def.png'">
+      </ng-template>
     </td-data-table>
     <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
       <h3>No results to display.</h3>
@@ -38,7 +43,8 @@
           {{size}}
         </mat-option>
       </mat-select>
-      {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+      {{pagingBar.range}}
+      <span hide-xs>of {{pagingBar.total}}</span>
     </td-paging-bar>
   </mat-card-content>
 </mat-card>

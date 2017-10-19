@@ -28,6 +28,12 @@
     <mat-divider></mat-divider>
     <td-data-table #dataTable [data]="filteredData" [columns]="columns" [selectable]="selectable" [clickable]="clickable" [multiple]="multiple"
       [sortable]="true" [sortBy]="sortBy" [(ngModel)]="selectedRows" [sortOrder]="sortOrder" (sortChange)="sort($event)">
+      <ng-template tdDataTableTemplate="tutor._id" let-value="value">
+        <img [src]="value+'.jpg'" onerror="this.src = 'http://localhost:3000/def.png'">
+      </ng-template>    
+      <ng-template tdDataTableTemplate="id" let-value="value">
+        <img [src]="value+'.jpg'" onerror="this.src = 'http://localhost:3000/def.png'">
+      </ng-template>
     </td-data-table>
     <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
       <h3>No results to display.</h3>

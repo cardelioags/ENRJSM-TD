@@ -17,10 +17,7 @@ import { LoginService } from "../../../services/login.service";
 export class MisTutoradosComponent implements AfterViewInit {
 
   columns: ITdDataTableColumn[] = [
-    { name: 'nomTutor', label: 'Tutor', width: 300 },
-    { name: 'matricula', label: 'Matrícula', sortable: true, width: 150 },
-    { name: 'nombre', label: 'Nombre', sortable: true, width: 300 },
-    { name: 'curp', label: 'CURP', width: 250 },
+    { name: 'nomAlu', label: 'Alumno(a)', width: 300 },
     { name: 'gradogrupo', label: 'Grado/Grupo', sortable: true },
   ];
 
@@ -33,10 +30,10 @@ export class MisTutoradosComponent implements AfterViewInit {
   fromRow: number = 1;
   currentPage: number = 1;
   pageSize: number = 50;
-  sortBy: string = 'nombre';
+  sortBy: string = 'nomAlu';
   selectedRows: any[] = [];
   selectable = true;
-  multiple = true;
+  multiple = false;
   clickable = true;
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
@@ -50,10 +47,10 @@ export class MisTutoradosComponent implements AfterViewInit {
   ) { }
 
   ngAfterViewInit(): void {
-    this.todos();
+    this.tutorados();
   }
-  todos() {
-    this._tutorias.query({tutor: this._login.getUsr()._id })
+  tutorados() {
+    this._tutorias.tutorados(this._login.getUsr().personal)
       .subscribe(res => {
         this.data = res;
         this.filter();
@@ -73,7 +70,7 @@ export class MisTutoradosComponent implements AfterViewInit {
       if (result !== undefined) {
         this._tutorias.asignar(result)
           .subscribe(res => {
-            this.todos();
+            this.tutorados();
             this.selectedRows = [];
           })
       }

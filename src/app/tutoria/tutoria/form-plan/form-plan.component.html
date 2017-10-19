@@ -1,0 +1,32 @@
+<form>
+  <h1 mat-dialog-title>Plan de Acción Tutorial</h1>
+  <div mat-dialog-content layout='column'>
+    <p>Define el Plan</p>
+    <div flex=100>
+      <mat-form-field>
+        <input matInput [matDatepicker]="inicio" placeholder="Inicio" required>
+        <mat-datepicker-toggle matSuffix [for]="inicio"></mat-datepicker-toggle>
+        <mat-datepicker #inicio></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="final" placeholder="Término" required>
+        <mat-datepicker-toggle matSuffix [for]="final"></mat-datepicker-toggle>
+        <mat-datepicker #final></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div flex=100>
+      <mat-form-field style="width:100%">
+        <textarea matInput placeholder="Conclusión diagnóstica" [(ngModel)]="plan.diagnostico" name="plan.diagnostico" required></textarea>
+      </mat-form-field>
+    </div>
+    <div flex=100>
+      <mat-form-field class="md-block" style="width:100%">
+        <textarea matInput [(ngModel)]="plan.objetivo" name="plan.objetivo" placeholder="Objetivo General:" required></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data" tabindex="2">Ok</button>
+    <button mat-button (click)="onNoClick()" tabindex="-1">No Thanks</button>
+  </div>
+</form>

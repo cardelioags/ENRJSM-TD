@@ -7,7 +7,7 @@ const Personal = require('./personal');
 var AccionSchema = new Schema ({
     objetivo: String,
     fecha_inicio: Date,
-    fecha_termio: Date,
+    fecha_termino: Date,
     estado: String,
     observaciones: [String],
     total_concluido: {type:Number, max:100, min:0},
@@ -29,7 +29,7 @@ var TutoriasSchema = new Schema ({
     alumno: {type:Schema.Types.ObjectId, ref:'Alumno', required:true},
     tutor: {type:Schema.Types.ObjectId, ref:'Personal'},
     ultima_modificacion: Date,
-    plan: [PlanSchema]
+    planes: [PlanSchema]
 
 }, {
     collection: "tutorias",

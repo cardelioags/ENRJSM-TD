@@ -36,7 +36,9 @@ import {
   MatDialogModule,
   MatDialog,
   MatTooltipModule,
-  MatPseudoCheckboxModule
+  MatPseudoCheckboxModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 } from "@angular/material";
 /**
  * Móludo Auth JWT
@@ -81,6 +83,8 @@ import { ModalAsignacionComponent } from './tutoria/asignacion/modal-asignacion/
 import { PerfilComponent } from './perfil/perfil.component';
 import { CamaraComponent } from './camara/camara.component';
 import { TutoriaComponent } from './tutoria/tutoria/tutoria.component';
+import { FormAccionComponent } from './tutoria/tutoria/form-accion/form-accion.component';
+import { FormPlanComponent } from './tutoria/tutoria/form-plan/form-plan.component';
 
 
 
@@ -115,7 +119,9 @@ import { TutoriaComponent } from './tutoria/tutoria/tutoria.component';
     ModalAsignacionComponent,
     PerfilComponent,
     CamaraComponent,
-    TutoriaComponent
+    TutoriaComponent,
+    FormAccionComponent,
+    FormPlanComponent
   ],
   imports: [
     HttpModule,
@@ -146,6 +152,8 @@ import { TutoriaComponent } from './tutoria/tutoria/tutoria.component';
     MatDialogModule,
     MatTooltipModule,
     MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     AuthModule
   ],
   providers: [
@@ -157,7 +165,9 @@ import { TutoriaComponent } from './tutoria/tutoria/tutoria.component';
   ],
   entryComponents: [
     ModalUsuarioComponent,
-    ModalAsignacionComponent
+    ModalAsignacionComponent,
+    FormAccionComponent,
+    FormPlanComponent,
   ],
   bootstrap: [AppComponent]
 })

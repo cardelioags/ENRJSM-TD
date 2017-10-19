@@ -1,0 +1,21 @@
+<form>
+    <h1 mat-dialog-title>Plan de Acción Tutorial</h1>
+    <div mat-dialog-content>
+      <p>Define el usuario y contraseña:</p>
+      <mat-form-field>
+        <input matInput tabindex="1" placeholder="Título del Plan" [(ngModel)]="plan.titulo" name="plan.titulo" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput tabindex="1" placeholder="Objetivo del Plan" [(ngModel)]="plan.objetivo" name="plan.objetivo" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [(ngModel)]="data.rol" placeholder="Elije un Rol" name="data.rol">
+            <mat-option *ngFor="let rol of roles" [value]="rol._id">{{rol.titulo}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="data" tabindex="2">Ok</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">No Thanks</button>
+    </div>
+  </form>

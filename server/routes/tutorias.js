@@ -45,30 +45,30 @@ router.route('/tutorias/asignar')
         let tutorados = req.body.tutorados;
         let tutor = req.body.tutor;
         for (let i in tutorados) {
-            Alumnos.update({ _id: tutorados[i]._id },{
+            Alumnos.update({ _id: tutorados[i]._id }, {
                 tutor: tutor
-            }, function(err, numAfect, rawResp){
+            }, function (err, numAfect, rawResp) {
                 if (err) console.log(err)
             })
             Tutorias.update({ alumno: tutorados[i]._id }, {
                 tutor: tutor
-            },{ 
-                upsert : true 
-            }, function (err, numAfect, rawResp) {
-                if (err) console.log(err)
-                if (i == (tutorados.length - 1))
-                    res.send(i);
-            });
+            }, {
+                    upsert: true
+                }, function (err, numAfect, rawResp) {
+                    if (err) console.log(err)
+                    if (i == (tutorados.length - 1))
+                        res.send(i);
+                });
         }
     })
 router.route('/tutorias/:id')
     .get((req, res) => {
-        Tutorias.findOne({alumno:req.params.id})
-        .populate('alumno')
-        .exec((err, tutoria) => {
-            if (err) console.log(err);
-            res.json(tutoria);
-        })
+        Tutorias.findOne({ alumno: req.params.id })
+            .populate('alumno')
+            .exec((err, tutoria) => {
+                if (err) console.log(err);
+                res.json(tutoria);
+            })
     })
 router.route('/tutorias/tutor/:id')
     .get((req, res) => {
@@ -78,5 +78,12 @@ router.route('/tutorias/tutor/:id')
                 if (err) res.json(err);
                 res.json(tutorias);
             })
+    })
+router.route('/tutorias/guardar')
+    .put((req, res) => {
+        Tutorias.findById(req.body.tutoria, function(err, tutoria){
+            tutoria.planes.push(req.body.plan)
+            tutoria.save(function(err){console.log(err)})
+        })
     })
 module.exports = router;

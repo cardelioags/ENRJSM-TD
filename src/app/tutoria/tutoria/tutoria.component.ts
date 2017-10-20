@@ -15,7 +15,7 @@ import { FormPlanComponent } from "./form-plan/form-plan.component";
 export class TutoriaComponent implements OnInit {
 
   tutoria: any;
-  planActivo: boolean = false;
+  planActivo: boolean = true;
   plan: Plan;
   accion: Accion;
  
@@ -30,18 +30,21 @@ export class TutoriaComponent implements OnInit {
     this.actRoute.params.subscribe(params => {
       this._tutorias.tutoria(params['id']).subscribe(res => {
         this.tutoria = res;
+        this.getPlanActivo(res);
         console.log(res);
       })
     })
 
   }
-  getPlanActivo() {
-    if ( this.tutoria != undefined && this.tutoria.planes.length > 0 ) {
-      for (let i in this.tutoria.planes) {
-        if (Date() >= this.tutoria.planes[i].fecha_inicio && Date() <= this.tutoria.planes[i].fecha_termino){
-          return this
+  getPlanActivo(tutoria) {
+    if ( tutoria !== undefined && tutoria.planes.length > 0 ) {
+      for (let i in tutoria.planes) {
+        if (new Date() >= new Date(tutoria.planes[i].fecha_inicio) && new Date() <= new Date(tutoria.planes[i].fecha_termino)){
+          this.plan = tutoria.planes[i];
+          console.log(this.plan)
+          this.planActivo = true;
         } else {
-          return false;
+          this.planActivo = false;
         }
       }
     } else {
@@ -60,6 +63,16 @@ export class TutoriaComponent implements OnInit {
       width: '700px',
       data: {plan: this.plan}
     });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result !== undefined){
+        this._tutorias.guardarPlan({plan: result, tutoria: this.tutoria._id})
+        .subscribe(res => {
+
+        })
+      }
+    });
+
   }
   openDialogAccion(id): void {
     this.crearAccion();
@@ -67,6 +80,16 @@ export class TutoriaComponent implements OnInit {
       width: '700px',
       data: {accion: this.accion}
     });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result !== undefined){
+        this._tutorias.guardarPlan(result)
+        .subscribe(res => {
+
+        })
+      }
+    });
+
   }
 
 

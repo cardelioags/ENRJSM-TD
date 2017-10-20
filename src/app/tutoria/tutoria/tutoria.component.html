@@ -20,10 +20,10 @@
       </div>
       <div flex-gt-xs=70 flex=100>
         <mat-card class="top-max" style="border-radius:20px">
-          <div *ngIf="!getPlanActivo()">La tutorada no tiene un Plan de Acción Activo, deberá crear un nuevo plan.
+          <div *ngIf="planActivo">La tutorada no tiene un Plan de Acción Activo, deberá crear un nuevo plan.
             <a mat-raised-button (click)="openDialogPlan()" color="accent">Crear nuevo Plan de Acción</a>
           </div>
-          <div *ngIf="getPlanActivo()">
+          <div *ngIf="planActivo">
             <mat-card-header>
               <mat-card-title>Plan de Acción Tutorial. Inicio {{plan.fecha_inicio}} - Término {{plan.fecha_termino}}</mat-card-title>
               <mat-card-subtitle>Objetivo General: Que la alumna logre...</mat-card-subtitle>

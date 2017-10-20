@@ -30,4 +30,9 @@ export class TutoriasService {
             return this.http.put(this.url+'/asignar', data, {headers:this.headers})
             .map(res => res.json())
         }
+        guardarPlan(plan): Observable<any[]>{
+            return this.http.put(this.url+'/guardar', plan, {headers:this.headers})
+            .map(res => res.json())
+        }
+
 }

@@ -41,6 +41,11 @@ export class AdministracionComponent implements AfterViewInit {
     title: 'Nuevo Rol',
     description: 'Crear nuevo Rol',
   },{
+    icon: 'perm_identity',
+    route: '/administracion/planesEst',
+    title: 'Plan de estudios',
+    description: 'Planes de Estudio',
+  },{
     icon: 'build',
     route: '.',
     title: 'Configuración',

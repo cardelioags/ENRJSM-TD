@@ -1,0 +1,456 @@
+{
+    descripcion: "Lic. en Educación Primaria (plan 2012)",
+    grados:
+    [
+        {
+            grado: 1,
+            descripcion: "1er. Semestre",
+            materias:
+            [
+                {
+                    descripcion: "El sujeto y su formación profesional como docente",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Psicología del desarrollo infantil (0-12 años)",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+
+                    descripcion: "Historia de la educación en México",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Panorama actual de la educación básica en México",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Aritmética: su aprendizaje y enseñanza",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Desarrollo físico y salud",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Las TIC en la educación",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Lengua Adicional y Tecnologías de la Información y la Comunicación",
+                    asistencias: 0
+                }, {
+                    descripcion: "Observación y análisis de la práctica educativa",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Práctica Profesional",
+                    asistencias: 0
+                }
+            ]
+        }, {
+            grado: 2,
+            descripcion: "2o. Semestre",
+            materias:
+            [
+                {
+                    descripcion: "Planeación educativa",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Bases psicológicas del aprendizaje",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Prácticas sociales del lenguaje",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Álgebra: su aprendizaje y enseñanza",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Acercamiento a las ciencias naturales en la primaria",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "La tecnología informática aplicada a los centros escolares",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Lengua Adicional y Tecnologías de la Información y la Comunicación",
+                    asistencias: 0
+                }, {
+                    descripcion: "Observación y análisis de la práctica escolar",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Práctica Profesional",
+                    asistencias: 0
+                }
+            ]
+        }, {
+            grado: 3,
+            descripcion: "3er. Semestre",
+            materias:
+            [
+                {
+                    descripcion: "Adecuación curricular",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Ambientes de aprendizaje",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Educación histórica en el aula",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Procesos de alfabetización inicial",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Geometría: su aprendizaje y enseñanza",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Ciencias naturales",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Inglés A1",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Lengua Adicional y Tecnologías de la Información y la Comunicación",
+                    asistencias: 0
+                }, {
+                    descripcion: "Observación y análisis de la práctica escolar",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Práctica Profesional",
+                    asistencias: 0
+                }
+            ]
+        }, {
+            grado: 4,
+            descripcion: "4o. Semestre",
+            materias:
+            [
+                {
+                    descripcion: "Teoría pedagógica",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Evaluación para el aprendizaje",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Educación histórica en diversos contextos",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Estrategias didácticas con propósitos comunicativos",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Procesamiento de información estadística",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Optativo",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Optativo",
+                    asistencias: 0
+                }, {
+                    descripcion: "Inglés A2",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Lengua Adicional y Tecnologías de la Información y la Comunicación",
+                    asistencias: 0
+                }, {
+                    descripcion: "Estrategias de trabajo docente",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Práctica Profesional",
+                    asistencias: 0
+                }
+            ]
+        }, {
+            grado: 5,
+            descripcion: "5o. Semestre",
+            materias:
+            [
+                {
+                    descripcion: "Herramientas básicas para la investigación educativa",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Atención a la diversidad",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Educación física",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Producción de textos escritos",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Educación artística (música, expresión corporal y danza)",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Optativo",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Optativo",
+                    asistencias: 0
+                }, {
+                    descripcion: "Inglés B1-",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Lengua Adicional y Tecnologías de la Información y la Comunicación",
+                    asistencias: 0
+                }, {
+                    descripcion: "Trabajo docente e innovación",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Práctica Profesional",
+                    asistencias: 0
+                }
+            ]
+        }, {
+            grado: 6,
+            descripcion: "6o. Semestre",
+            materias:
+            [
+                {
+                    descripcion: "Filosofía de la educación",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Diagnostico e intervención socioeducativa",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Formación cívica y ética",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Educación geográfica",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Educación artística (artes visuales y teatro)",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Optativo",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Optativo",
+                    asistencias: 0
+                }, {
+                    descripcion: "Inglés B1",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Lengua Adicional y Tecnologías de la Información y la Comunicación",
+                    asistencias: 0
+                }, {
+                    descripcion: "Proyectos de intervención socioeducativa",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Práctica Profesional",
+                    asistencias: 0
+                }
+            ]
+        }, {
+            grado: 7,
+            descripcion: "7o. Semestre",
+            materias:
+            [
+                {
+                    descripcion: "Planeación y gestión educativa",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Atención educativa para la inclusión",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Psicopedagógico",
+                    asistencias: 0
+                }, {
+                    descripcion: "Formación ciudadana",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Aprendizaje y enseñanza de la geografía",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Preparación para la Enseñanza y el Aprendizaje",
+                    asistencias: 0
+                }, {
+                    descripcion: "Optativo",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Optativo",
+                    asistencias: 0
+                }, {
+                    descripcion: "Inglés B2-",
+                    creditos: 4.5,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Lengua Adicional y Tecnologías de la Información y la Comunicación",
+                    asistencias: 0
+                }, {
+                    descripcion: "Práctica profesional",
+                    creditos: 6.75,
+                    calificacion: 0,
+                    horas: 6,
+                    campo: "Práctica Profesional",
+                    asistencias: 0
+                }
+            ]
+        }, {
+            grado: 8,
+            descripcion: "8o. Semestre",
+            materias:
+            [
+                {
+                    descripcion: "Trabajo de titulación",
+                    creditos: 3.6,
+                    calificacion: 0,
+                    horas: 4,
+                    campo: "Trabajo de titulación",
+                    asistencias: 0
+                }, {
+                    descripcion: "Práctica profesional",
+                    creditos: 6.4,
+                    calificacion: 0,
+                    horas: 20,
+                    campo: "Práctica profesional",
+                    asistencias: 0
+                }
+            ]
+        }
+    ]
+}

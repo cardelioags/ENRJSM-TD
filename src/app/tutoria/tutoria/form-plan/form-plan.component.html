@@ -4,7 +4,7 @@
     <p>Define el Plan</p>
     <div flex=100>
       <mat-form-field>
-        <input matInput [matDatepicker]="inicio"  (dateChange)="dateChange(plan.fecha_inicio)" [(ngModel)]="plan.fecha_inicio" name="plan.fecha_inicio" placeholder="Inicio" required>
+        <input matInput [matDatepicker]="inicio" [(ngModel)]="plan.fecha_inicio" name="plan.fecha_inicio" placeholder="Inicio" required>
         <mat-datepicker-toggle matSuffix [for]="inicio"></mat-datepicker-toggle>
         <mat-datepicker #inicio></mat-datepicker>
       </mat-form-field>
@@ -26,7 +26,7 @@
     </div>
   </div>
   <div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="plan" tabindex="2">Guardar</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="plan" tabindex="2">Guardar</button>
     <button mat-button (click)="onNoClick()" tabindex="-1">Cancelar</button>
   </div>
 </form>

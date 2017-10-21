@@ -6,6 +6,7 @@ const Personal = require('./personal');
 
 var AccionSchema = new Schema ({
     objetivo: String,
+    descripcion: String,
     fecha_inicio: Date,
     fecha_termino: Date,
     estado: String,
@@ -16,7 +17,7 @@ var AccionSchema = new Schema ({
 var PlanSchema = new Schema ({
     tutor:{type:Schema.Types.ObjectId, ref:'Personal'},
     objetivo: String,
-    conclusion: String,
+    diagnostico: String,
     fecha_inicio: Date,
     fecha_termino: Date,
     estado: String,

@@ -31,12 +31,7 @@ export class FormPlanComponent implements OnInit {
   ) {
      dateAdapter.setLocale('es-MX');
     }
-  dateChange(fecha){ 
-    fecha = this.plan.fecha_inicio
-    this.plan.fecha_inicio = new Date ()
-    console.log(this.plan.fecha_inicio)
-  }
- 
+  
   ngOnInit() {
     
   }

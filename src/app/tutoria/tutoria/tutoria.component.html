@@ -1,12 +1,8 @@
 <mat-card>
   <mat-card-content>
-    <div layout="row" layout-gt-sm="column center">
-      <div flex-gt-xs=30 flex=100>
+    <div layout-gt-sm="row" layout="columnz">
+      <div flex-gt-sm=30 >
         <img [src]="id+'.jpg'" onerror="this.src = 'http://localhost:3000/def.png'">
-      </div>
-    </div>
-    <div layout="row" layout-gt-sm="column center">
-      <div flex-gt-xs=30 flex=100>
         <mat-card class="top-max" style="border-radius:20px">
           <mat-card-content class="bgc-blue-grey-400" style="border-radius:20px; color:white;">
             <br>
@@ -18,43 +14,34 @@
           </mat-card-content>
         </mat-card>
       </div>
-      <div flex-gt-xs=70 flex=100>
-        <mat-card class="top-max" style="border-radius:20px">
-          <div *ngIf="planActivo">La tutorada no tiene un Plan de Acción Activo, deberá crear un nuevo plan.
-            <a mat-raised-button (click)="openDialogPlan()" color="accent">Crear nuevo Plan de Acción</a>
+      <div flex-gt-sm=70 >
+        <mat-card class="top-max" style="border-radius:20px" style="margin-top:50px">
+          <div *ngIf="!planActivo">La tutorada no tiene un Plan de Acción Activo, deberá crear un nuevo plan.
+            <a mat-raised-button (click)="openDialogPlan(plan)" color="accent">Crear nuevo Plan de Acción</a>
           </div>
           <div *ngIf="planActivo">
             <mat-card-header>
-              <mat-card-title>Plan de Acción Tutorial. Inicio {{plan.fecha_inicio}} - Término {{plan.fecha_termino}}</mat-card-title>
-              <mat-card-subtitle>Objetivo General: Que la alumna logre...</mat-card-subtitle>
+              <mat-card-title>Plan de Acción Tutorial. Inicio {{plan.fecha_inicio | date: "dd/MM/yyyy"}} - Término {{plan.fecha_termino |
+                date: "dd/MM/yyyy"}}
+                <a mat-mini-fab (click)="openDialogPlan(plan)">
+                  <mat-icon class="mat-18">edit</mat-icon>
+                </a>
+              </mat-card-title>
+              <mat-card-subtitle>
+                Diagnóstico:
+                <pre>{{plan.diagnostico}}</pre> Objetivo General:
+                <pre>{{plan.objetivo}}</pre>
+              </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
+              <button mat-raised-button color="primary" (click)="openDialogAccion()">Añadir acción</button>
               <td-steps>
-                <td-step #step1 label="Basic Usage" sublabel="Toggle between active and inactive and emit events." [active]="true" [disabled]="disabled"
+                <td-step *ngFor="let accion of plan.acciones; let i=index" label="" sublabel="" [active]="true" [disabled]="disabled"
                   (activated)="activeStep1Event()" (deactivated)="deactiveStep1Event()">
                   <ng-template td-step-label>
-                    <span>Basic Usage (template)</span>
+                    {{accion.descripcion}}
                   </ng-template>
-                  Include any content you like for an active stepper
-                </td-step>
-                <td-step #step2 label="Required State" sublabel="Toggle between active and inactive while in required state and disable ripple."
-                  [state]="stateStep2" [disabled]="disabled" disableRipple>
-                  This step is required!
-                  <ng-template td-step-actions>
-                    <button mat-raised-button color="primary" (click)="toggleRequiredStep2()" class="text-upper">Toggle Require</button>
-                    <button mat-button (click)="step2.active = false" class="text-upper">Cancel</button>
-                  </ng-template>
-                </td-step>
-                <td-step #step3 label="Complete State" sublabel="Toggle between active and inactive while in complete state." [state]="stateStep3"
-                  [disabled]="disabled">
-                  Mark this step complete and get a summary
-                  <ng-template td-step-summary>
-                    Use an optional step summary to summarize the info in this step
-                  </ng-template>
-                  <ng-template td-step-actions>
-                    <button mat-raised-button color="primary" (click)="toggleCompleteStep3()" class="text-upper">Toggle Complete</button>
-                    <button mat-button (click)="step3.active = false" class="text-upper">Cancel</button>
-                  </ng-template>
+                  Include any content
                 </td-step>
               </td-steps>
             </mat-card-content>

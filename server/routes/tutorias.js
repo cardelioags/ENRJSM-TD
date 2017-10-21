@@ -79,11 +79,72 @@ router.route('/tutorias/tutor/:id')
                 res.json(tutorias);
             })
     })
-router.route('/tutorias/guardar')
+router.route('/tutorias/guardar/plan')
     .put((req, res) => {
-        Tutorias.findById(req.body.tutoria, function(err, tutoria){
-            tutoria.planes.push(req.body.plan)
-            tutoria.save(function(err){console.log(err)})
-        })
+        console.log(req.body);
+        if (req.body.plan._id) {
+            Tutorias.update({
+                _id: req.body.tutoria, "planes._id": req.body.plan._id
+            },
+                {
+                    $set: {
+                        "planes.$.fecha_inicio": req.body.plan.fecha_inicio,
+                        "planes.$.fecha_termino": req.body.plan.fecha_termino,
+                        "planes.$.objetivo": req.body.plan.objetivo,
+                        "planes.$.diagnostico": req.body.plan.diagnostico 
+                    }
+                }, function (err) {
+                    if (err) console.log(err);
+                    res.send(true);
+                }, function (err){
+                    console.log(err);
+                });
+        } else {
+            Tutorias.findOne({ _id: req.body.tutoria, "planes._id":req.body.plan._id }, function (err, tutoria) {
+                if (err) console.log(err);
+                tutoria.planes.acciones.push(req.body.accion)
+                tutoria.save(function (err) {
+                    if (err) console.log(err);
+                    res.send(true);
+                })
+            })
+        }
+    })
+    router.route('/tutorias/guardar/accion')
+    .put((req, res) => {
+        console.log(req.body);
+        if (req.body.accion._id) {
+            Tutorias.update({
+                _id: req.body.tutoria, "planes._id": req.body.plan._id, "planes.$.acciones._id":req.body.accion._id
+            },
+                {
+                    $set: {
+                        "planes.$.acciones.$.fecha_inicio": req.body.accion.fecha_inicio,
+                        "planes.$.acciones.$.fecha_termino": req.body.accion.fecha_termino,
+                        "planes.$.acciones.$.objetivo": req.body.accion.objetivo,
+                        "planes.$.acciones.$.descripcion": req.body.accion.descripcion 
+                    }
+                }, function (err) {
+                    if (err) console.log(err);
+                    res.send(true);
+                }, function (err){
+                    console.log(err);
+                });
+        } else {
+            Tutorias.update({
+                _id: req.body.tutoria, "planes._id": req.body.plan._id
+            },
+                {
+                    $push: {
+                        "planes.$.acciones": req.body.accion,
+                    }
+                }, function (err) {
+                    if (err) console.log(err);
+                    res.send(true);
+                }, function (err){
+                    console.log(err);
+                });
+            
+        }
     })
 module.exports = router;

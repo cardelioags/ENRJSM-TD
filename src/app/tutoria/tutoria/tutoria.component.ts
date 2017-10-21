@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TutoriasService } from "../../../services/tutorias.service";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { StepState } from '@covalent/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormAccionComponent } from "./form-accion/form-accion.component";
 import { FormPlanComponent } from "./form-plan/form-plan.component";
 
@@ -15,7 +15,7 @@ import { FormPlanComponent } from "./form-plan/form-plan.component";
 export class TutoriaComponent implements OnInit {
 
   tutoria: any;
-  planActivo: boolean = true;
+  planActivo: boolean = false;
   plan: Plan;
   accion: Accion;
  
@@ -41,7 +41,6 @@ export class TutoriaComponent implements OnInit {
       for (let i in tutoria.planes) {
         if (new Date() >= new Date(tutoria.planes[i].fecha_inicio) && new Date() <= new Date(tutoria.planes[i].fecha_termino)){
           this.plan = tutoria.planes[i];
-          console.log(this.plan)
           this.planActivo = true;
         } else {
           this.planActivo = false;
@@ -57,8 +56,8 @@ export class TutoriaComponent implements OnInit {
   crearAccion(){
     this.accion = new Accion();
   }
-  openDialogPlan(id): void {
-    this.crearPlan();
+  openDialogPlan(plan?:any): void {
+    if(!plan) this.crearPlan();
     let dialogRef = this.dialog.open(FormPlanComponent, {
       width: '700px',
       data: {plan: this.plan}
@@ -68,14 +67,15 @@ export class TutoriaComponent implements OnInit {
       if (result !== undefined){
         this._tutorias.guardarPlan({plan: result, tutoria: this.tutoria._id})
         .subscribe(res => {
-
+          this.plan = result;
+          this.planActivo = true;
         })
       }
     });
 
   }
-  openDialogAccion(id): void {
-    this.crearAccion();
+  openDialogAccion(): void {
+    if(!this.accion) this.accion = new Accion();
     let dialogRef = this.dialog.open(FormAccionComponent, {
       width: '700px',
       data: {accion: this.accion}
@@ -83,9 +83,9 @@ export class TutoriaComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result !== undefined){
-        this._tutorias.guardarPlan(result)
+        this._tutorias.guardarAccion({accion: result, tutoria: this.tutoria._id, plan: this.plan})
         .subscribe(res => {
-
+          this.plan.acciones.push(result);
         })
       }
     });
@@ -119,7 +119,7 @@ export class TutoriaComponent implements OnInit {
 class Plan {
   tutor: String;
   objetivo: String;
-  conclusion: String;
+  diagnostico: String;
   fecha_inicio: Date;
   fecha_termino: Date;
   estado: String;

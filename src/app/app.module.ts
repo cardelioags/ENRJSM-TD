@@ -85,6 +85,7 @@ import { CamaraComponent } from './camara/camara.component';
 import { TutoriaComponent } from './tutoria/tutoria/tutoria.component';
 import { FormAccionComponent } from './tutoria/tutoria/form-accion/form-accion.component';
 import { FormPlanComponent } from './tutoria/tutoria/form-plan/form-plan.component';
+import { PlanesEstComponent } from './administracion/planes-est/planes-est.component'
 
 
 
@@ -121,7 +122,8 @@ import { FormPlanComponent } from './tutoria/tutoria/form-plan/form-plan.compone
     CamaraComponent,
     TutoriaComponent,
     FormAccionComponent,
-    FormPlanComponent
+    FormPlanComponent,
+    PlanesEstComponent
   ],
   imports: [
     HttpModule,

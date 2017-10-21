@@ -25,6 +25,7 @@ import { TutoradosComponent } from "./tutoria/tutorados/tutorados.component";
 import { MisTutoradosComponent } from "./tutoria/mis-tutorados/mis-tutorados.component";
 import { TutoriaComponent } from "./tutoria/tutoria/tutoria.component";
 import { CamaraComponent } from "./camara/camara.component";
+import { PlanesEstComponent } from "./administracion/planes-est/planes-est.component";
 
 
 
@@ -61,6 +62,9 @@ const routes: Routes = [
   {
     path: 'administracion', component: AdministracionComponent, children:
     [
+      {
+        path: 'planesEst', component: PlanesEstComponent
+      },
       {
         path: 'personal', component: MainPersonalComponent, children:
         [

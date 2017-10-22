@@ -5,7 +5,7 @@
   <mat-card-content>
     <div layout-align="center" layout="row" layout-gt-sm="column center">
       <div flex-gt-xs=30 flex=100>
-        <img [src]="persona._id+'.jpg'" onerror="this.src = 'http://localhost:3000/def.png'">
+        <img [src]="'http://localhost:3000/'+persona._id+'.jpg'" onerror="this.src = 'http://localhost:3000/def.png'">
       </div>
     </div>
     <div layout-align="center" layout="row" layout-gt-sm="column center"> 

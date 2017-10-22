@@ -81,7 +81,6 @@ router.route('/tutorias/tutor/:id')
     })
 router.route('/tutorias/guardar/plan')
     .put((req, res) => {
-        console.log(req.body);
         if (req.body.plan._id) {
             Tutorias.update({
                 _id: req.body.tutoria, "planes._id": req.body.plan._id
@@ -91,16 +90,16 @@ router.route('/tutorias/guardar/plan')
                         "planes.$.fecha_inicio": req.body.plan.fecha_inicio,
                         "planes.$.fecha_termino": req.body.plan.fecha_termino,
                         "planes.$.objetivo": req.body.plan.objetivo,
-                        "planes.$.diagnostico": req.body.plan.diagnostico 
+                        "planes.$.diagnostico": req.body.plan.diagnostico
                     }
                 }, function (err) {
                     if (err) console.log(err);
                     res.send(true);
-                }, function (err){
+                }, function (err) {
                     console.log(err);
                 });
         } else {
-            Tutorias.findOne({ _id: req.body.tutoria, "planes._id":req.body.plan._id }, function (err, tutoria) {
+            Tutorias.findOne({ _id: req.body.tutoria, "planes._id": req.body.plan._id }, function (err, tutoria) {
                 if (err) console.log(err);
                 tutoria.planes.acciones.push(req.body.accion)
                 tutoria.save(function (err) {
@@ -110,25 +109,24 @@ router.route('/tutorias/guardar/plan')
             })
         }
     })
-    router.route('/tutorias/guardar/accion')
+router.route('/tutorias/guardar/accion')
     .put((req, res) => {
-        console.log(req.body);
         if (req.body.accion._id) {
             Tutorias.update({
-                _id: req.body.tutoria, "planes._id": req.body.plan._id, "planes.$.acciones._id":req.body.accion._id
+                _id: req.body.tutoria, "planes._id": req.body.plan._id
             },
                 {
                     $set: {
-                        "planes.$.acciones.$.fecha_inicio": req.body.accion.fecha_inicio,
-                        "planes.$.acciones.$.fecha_termino": req.body.accion.fecha_termino,
-                        "planes.$.acciones.$.objetivo": req.body.accion.objetivo,
-                        "planes.$.acciones.$.descripcion": req.body.accion.descripcion 
+                        ["planes.$.acciones." + req.body.iaccion + ".fecha_inicio"]: req.body.accion.fecha_inicio,
+                        ["planes.$.acciones." + req.body.iaccion + ".fecha_termino"]: req.body.accion.fecha_termino,
+                        ["planes.$.acciones." + req.body.iaccion + ".objetivo"]: req.body.accion.objetivo,
+                        ["planes.$.acciones." + req.body.iaccion + ".descripcion"]: req.body.accion.descripcion,
+                        ["planes.$.acciones." + req.body.iaccion + ".estado"]: req.body.accion.estado,
+                        ["planes.$.acciones." + req.body.iaccion + ".activa"]: req.body.accion.activa
                     }
-                }, function (err) {
+                }, function (err, affected) {
                     if (err) console.log(err);
-                    res.send(true);
-                }, function (err){
-                    console.log(err);
+                    res.json(affected);
                 });
         } else {
             Tutorias.update({
@@ -141,10 +139,22 @@ router.route('/tutorias/guardar/plan')
                 }, function (err) {
                     if (err) console.log(err);
                     res.send(true);
-                }, function (err){
-                    console.log(err);
                 });
-            
+
         }
+    })
+router.route('/tutorias/eliminar/:tutoria/:plan/:accion')
+    .delete((req, res) => {
+        Tutorias.update({
+            _id: req.params.tutoria, "planes._id": req.params.plan
+        },
+            {
+                $pull: {
+                    "planes.$.acciones": {_id:req.params.accion}
+                }
+            }, function (err) {
+                if (err) console.log(err);
+                res.send(true);
+            });
     })
 module.exports = router;

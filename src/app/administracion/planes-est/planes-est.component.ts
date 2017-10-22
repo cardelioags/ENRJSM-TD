@@ -10,12 +10,12 @@ import { PlanesEstService } from "../../../services/planes-est.service"
 export class PlanesEstComponent implements OnInit {
 
   constructor(private _planesEst: PlanesEstService) { }
-  planes: any[] = []
+  plan: any = {};
 
   ngOnInit() {
     this._planesEst.todos()
     .subscribe(res => {
-      this.planes = res;
+      this.plan = res[0];
       console.log(res);
     })
   }

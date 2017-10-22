@@ -17,7 +17,7 @@ import { AspectoService } from "../../../../services/aspecto.service";
 export class PersonalComponent implements AfterViewInit {
 
   columns: ITdDataTableColumn[] = [
-    { name: '_id', label: 'Opciones'},
+    { name: '_id', label: 'Opciones',width: 150},
     { name: 'nombre', label: 'Nombre', sortable: true, width: 300},
     { name: 'curp', label: 'CURP', width: 200 },
     { name: 'email', label: 'Correo', width: 250 },    

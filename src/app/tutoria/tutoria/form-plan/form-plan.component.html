@@ -25,8 +25,8 @@
       </mat-form-field>
     </div>
   </div>
-  <div mat-dialog-actions>
-    <button mat-raised-button color="primary" [mat-dialog-close]="plan" tabindex="2">Guardar</button>
+  <div mat-dialog-actions layout="row" layout-align="end">
     <button mat-button (click)="onNoClick()" tabindex="-1">Cancelar</button>
+    <button mat-button color="accent" [mat-dialog-close]="plan" tabindex="2"><mat-icon>save</mat-icon> Guardar</button>
   </div>
 </form>

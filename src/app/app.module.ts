@@ -39,6 +39,7 @@ import {
   MatPseudoCheckboxModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatRadioModule
 } from "@angular/material";
 /**
  * Móludo Auth JWT
@@ -156,6 +157,7 @@ import { PlanesEstComponent } from './administracion/planes-est/planes-est.compo
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatRadioModule,
     AuthModule
   ],
   providers: [

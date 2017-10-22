@@ -29,6 +29,8 @@ const rolesRoutes = require('./server/routes/roles');
 const usuariosRoutes = require('./server/routes/usuarios');
 const tutoriaRoutes = require('./server/routes/tutorias');
 const loginRoutes = require('./server/routes/login');
+const planesEst = require('./server/routes/planes-est');
+const subeFoto = require('./server/routes/foto')
 
 
 
@@ -39,7 +41,9 @@ app.use('/api', [
   rolesRoutes,
   tutoriaRoutes,
   usuariosRoutes,
-  loginRoutes
+  loginRoutes,
+  planesEst,
+  subeFoto
 ]);
 
 app.use(express.static(path.join(__dirname, 'server/fotos_perfil/')))

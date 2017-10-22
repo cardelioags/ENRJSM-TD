@@ -32,7 +32,12 @@
       <td-data-table #dataTable [data]="filteredData" [columns]="columns" [selectable]="selectable" [clickable]="clickable" [multiple]="multiple"
         [sortable]="true" [sortBy]="sortBy" [(ngModel)]="selectedRows" [sortOrder]="sortOrder" (sortChange)="sort($event)"
         [style.height.px]="auto">
+
         <ng-template tdDataTableTemplate="_id" let-value="value">
+          <a [routerLink]="[ '/camara', value ]">
+            <img [src]="'http://localhost:3000/'+value+'.jpg'" onerror="this.src = 'http://localhost:3000/def.png'">
+          </a>
+
           <button mat-icon-button [routerLink]="[ '/administracion/personal/editar', value ]">
             <mat-icon class="md-24">edit</mat-icon>
           </button>

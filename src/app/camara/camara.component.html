@@ -1,7 +1,16 @@
-<div style="text-align:center">
-  <h1>
-    Prueba de la cámara
-  </h1>
-  <button (click)="stopStream()">Detener streaming</button>
-  <video #hardwareVideo autoplay></video>
+<div layout="column" layout-align="center">
+  <div flex>
+    <h2>
+      Captura Foto de Perfil.
+    </h2>
+    <video #hardwareVideo autoplay width="600" height="420"></video>
+  </div>
+  <!--<button (click)="stopStream()">Detener streaming</button>-->
+  <div flex>
+    <button (click)="capturaFoto()">Capturar foto</button>
+    <button (click)="guardar()">Guardar foto</button>
+  </div>
+  <div flex>
+    <canvas #canvas width="600" height="420"></canvas>
+  </div>
 </div>

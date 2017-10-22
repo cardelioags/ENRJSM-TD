@@ -1,7 +1,7 @@
 <form>
     <h1 mat-dialog-title>Acción del Plan</h1>
     <div mat-dialog-content layout='column'>
-      <p>Define el Plan</p>
+      <p>Define la acción</p>
       <div flex=100>
         <mat-form-field>
           <input matInput [matDatepicker]="inicio" [(ngModel)]="accion.fecha_inicio" name="accion.fecha_inicio" placeholder="Inicio" required>
@@ -25,8 +25,13 @@
         </mat-form-field>
       </div>
     </div>
-    <div mat-dialog-actions>
-      <button mat-button [mat-dialog-close]="accion" tabindex="2">Guardar</button>
+    <mat-radio-group [(ngModel)]="accion.estado" name="accion.estado">
+        <mat-radio-button value="none">Activa </mat-radio-button>
+        <mat-radio-button value="complete">Terminada </mat-radio-button>
+        <mat-radio-button value="required">Importante </mat-radio-button>
+      </mat-radio-group>
+    <div mat-dialog-actions lkayout="row" layout-align="end">
       <button mat-button (click)="onNoClick()" tabindex="-1">Cancelar</button>
+      <button mat-button [mat-dialog-close]="accion" tabindex="2" color="accent"><mat-icon>save</mat-icon> Guardar</button>
     </div>
   </form>

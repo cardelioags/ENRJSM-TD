@@ -9,6 +9,7 @@ var AccionSchema = new Schema ({
     descripcion: String,
     fecha_inicio: Date,
     fecha_termino: Date,
+    activa: Boolean,
     estado: String,
     observaciones: [String],
     total_concluido: {type:Number, max:100, min:0},

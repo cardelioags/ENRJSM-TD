@@ -1,7 +1,7 @@
 img {
     height: 100px;
-    width: 100px;
-    border-radius: 100px;
+    width: 125px;
+    border-radius: 150px;
     z-index: 1000;
     display: block;
     position: relative;

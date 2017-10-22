@@ -34,8 +34,12 @@ export class TutoriasService {
             return this.http.put(this.url+'/guardar/plan', plan, {headers:this.headers})
             .map(res => res.json())
         }
-        guardarAccion(plan): Observable<any[]>{
-            return this.http.put(this.url+'/guardar/accion', plan, {headers:this.headers})
+        guardarAccion(accion): Observable<any[]>{
+            return this.http.put(this.url+'/guardar/accion', accion, {headers:this.headers})
+            .map(res => res.json())
+        }
+        eliminaAccion(tutoria,plan,accion): Observable<any[]>{
+            return this.http.delete(this.url+`/eliminar/${tutoria}/${plan}/${accion}`)
             .map(res => res.json())
         }
 

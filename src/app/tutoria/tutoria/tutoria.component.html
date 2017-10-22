@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-content>
-    <div layout-gt-sm="row" layout="columnz">
-      <div flex-gt-sm=30 >
+    <div layout-gt-sm="row" layout="column">
+      <div flex-gt-sm=30>
         <img [src]="id+'.jpg'" onerror="this.src = 'http://localhost:3000/def.png'">
         <mat-card class="top-max" style="border-radius:20px">
           <mat-card-content class="bgc-blue-grey-400" style="border-radius:20px; color:white;">
@@ -14,7 +14,7 @@
           </mat-card-content>
         </mat-card>
       </div>
-      <div flex-gt-sm=70 >
+      <div flex-gt-sm=70>
         <mat-card class="top-max" style="border-radius:20px" style="margin-top:50px">
           <div *ngIf="!planActivo">La tutorada no tiene un Plan de Acción Activo, deberá crear un nuevo plan.
             <a mat-raised-button (click)="openDialogPlan(plan)" color="accent">Crear nuevo Plan de Acción</a>
@@ -34,14 +34,19 @@
               </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-              <button mat-raised-button color="primary" (click)="openDialogAccion()">Añadir acción</button>
+              <button mat-button color="accent" (click)="openDialogAccion(null)"><mat-icon>add</mat-icon> Añadir acción</button>
               <td-steps>
-                <td-step *ngFor="let accion of plan.acciones; let i=index" label="" sublabel="" [active]="true" [disabled]="disabled"
-                  (activated)="activeStep1Event()" (deactivated)="deactiveStep1Event()">
+                <td-step [active]="accion.activa" [state]="accion.estado" *ngFor="let accion of plan.acciones; let i=index" label="" sublabel="" [active]="true" [disabled]="disabled" (activated)="activeStep1Event()"
+                  (deactivated)="deactiveStep1Event()">
                   <ng-template td-step-label>
                     {{accion.descripcion}}
                   </ng-template>
-                  Include any content
+                  <ng-template td-step-actions>
+                      <button mat-button color="primary" (click)="eliminaAccion(tutoria._id, plan._id, accion._id, i)"><mat-icon>delete</mat-icon> Eliminar Acción</button>
+                      <button mat-button (click)="openDialogAccion(accion, i)"><mat-icon>edit</mat-icon> Editar Acción</button>
+                  </ng-template>
+                  {{accion.objetivo}}
+                  {{accion.desarrollo}}
                 </td-step>
               </td-steps>
             </mat-card-content>

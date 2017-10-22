@@ -12,7 +12,7 @@ import { AlumnosService } from "../../../services/alumnos.service";
 export class AlumnosComponent implements AfterViewInit {
 
   columns: ITdDataTableColumn[] = [
-    { name: 'id', label: '', sortable: true, width: 100 },    
+    { name: 'id', label: '', sortable: true, width: 200 },    
     { name: 'matricula', label: 'Matrícula', sortable: true, width: 150 },
     { name: 'nombre', label: 'Nombre', sortable: true, width: 300 },
     { name: 'curp', label: 'CURP', width: 250 },

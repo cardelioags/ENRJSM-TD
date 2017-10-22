@@ -32,7 +32,7 @@ import { PlanesEstComponent } from "./administracion/planes-est/planes-est.compo
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'perfil', component: PerfilComponent },
-  { path: 'camara', component: CamaraComponent },
+  { path: 'camara/:id', component: CamaraComponent },
   { path: 'login', component: LoginComponent },
   { path: 'reportes', component: ReportesComponent },
   {

@@ -16,10 +16,11 @@ import 'rxjs/add/operator/map';
 })
 export class ModalAsignacionComponent implements OnInit {
   public personal: any[] = [];
-  public tutor = { nombre: '', curp: '' };
+  public tutor = { nombre: '', curp: '', _id:String };
   private sub: any;
   public id: any;
   public titulo = ""
+  public valPersonal: any;
 
   public filteredOptions: any[];  
   

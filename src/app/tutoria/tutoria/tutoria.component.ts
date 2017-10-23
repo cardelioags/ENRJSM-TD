@@ -19,6 +19,7 @@ export class TutoriaComponent implements OnInit {
   planActivo: boolean = false;
   plan: Plan;
   accion: Accion;
+  id:any;
 
 
   constructor(

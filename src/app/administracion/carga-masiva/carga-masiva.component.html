@@ -1,0 +1,29 @@
+<mat-toolbar>
+  <div layout="row" layout-align="start center" flex>
+    <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Carga Masiva</span>
+    <span flex></span>
+    <button mat-icon-button>
+      <mat-icon>settings</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<mat-card>
+  <mat-card-content>
+    <div layout="row">
+      <td-file-input color="warn" (change)="onFileChange($event)" accept=".xlsx,.csv,.xls">
+        <mat-icon>attach_file</mat-icon>
+        <span>Elige un archivo...</span>
+      </td-file-input>
+      <a mat-raised-button color="accent">Cargar Alumnos</a>
+      <a mat-raised-button color="accent" (click)="cargaCalificaciones()">Cargar calificaciones</a>
+    </div>
+    <table>
+      <tr *ngFor="let row of data">
+        <td *ngFor="let val of row">{{val}}</td>
+      </tr>
+    </table>
+  </mat-card-content>
+</mat-card>

@@ -2,6 +2,7 @@ import { Component, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef } 
 import { TdMediaService } from "@covalent/core";
 import { LoginService } from "../../services/login.service";
 
+
 @Component({
   //changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-administracion',
@@ -20,7 +21,7 @@ export class AdministracionComponent implements AfterViewInit {
     route: '/administracion/personal/nuevo',
     title: 'Nuevo Personal',
     description: 'Añadir nuevo personal',
-  },{
+  }, {
     icon: 'face',
     route: '/administracion/usuarios',
     title: 'Usuarios',
@@ -35,21 +36,21 @@ export class AdministracionComponent implements AfterViewInit {
     route: '/administracion/roles',
     title: 'Roles/Permisos',
     description: 'Administración de Roles y Permisos',
-  },{
+  }, {
     icon: 'perm_identity',
     route: '/administracion/roles/nuevo',
     title: 'Nuevo Rol',
     description: 'Crear nuevo Rol',
-  },{
+  }, {
     icon: 'perm_identity',
     route: '/administracion/planesEst',
     title: 'Plan de estudios',
     description: 'Planes de Estudio',
-  },{
+  }, {
     icon: 'build',
-    route: '.',
-    title: 'Configuración',
-    description: 'Configuración del Sistema',
+    route: '/administracion/cargaMasiva',
+    title: 'Carga Masiva',
+    description: 'Herramienta de carga masiva',
   },
   ];
 
@@ -65,6 +66,6 @@ export class AdministracionComponent implements AfterViewInit {
       this._changeDetectorRef.detectChanges();
     });
   }
-  
+
 
 }

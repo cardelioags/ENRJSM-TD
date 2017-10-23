@@ -14,6 +14,7 @@ import { TutoriasService } from "../../../services/tutorias.service";
   providers: [TutoriasService]
 })
 export class AsignacionComponent implements AfterViewInit {
+  tutor = {nombre: String, curp:String, _id:String}
 
   columns: ITdDataTableColumn[] = [
     { name: 'tutor._id', label: '', width:100},

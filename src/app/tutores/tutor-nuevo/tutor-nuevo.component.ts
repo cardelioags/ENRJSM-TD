@@ -23,6 +23,7 @@ export class TutorNuevoComponent implements OnInit {
   public personal: any[] = [];
   public persona: any;
   public filteredOptions: any[];
+  public valPersonal: any;
 
   constructor(
     private tutores: TutoresService,

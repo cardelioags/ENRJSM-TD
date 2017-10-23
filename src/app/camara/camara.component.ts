@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FotoService } from "../../services/foto.service"
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-camara',
@@ -12,14 +13,18 @@ export class CamaraComponent implements OnInit {
   @ViewChild('hardwareVideo') hardwareVideo: any;
   @ViewChild('canvas') canvas: any;
 
-  constructor(private _foto:FotoService, private _route:ActivatedRoute){}
-  
+  constructor(
+    private _foto: FotoService,
+    private _route: ActivatedRoute,
+    private _location: Location
+  ) { }
+
   _navigator = <any>navigator;
   localStream;
-  
-  video:any; 
-  foto:any;
-  img:any;
+
+  video: any;
+  foto: any;
+  img: any;
   ngOnInit() {
 
     this.video = this.hardwareVideo.nativeElement;
@@ -44,18 +49,23 @@ export class CamaraComponent implements OnInit {
       track.stop();
     });
   }
-  capturaFoto(){
-    this.foto.getContext("2d").drawImage(this.video, 0, 0, 600, 420);
+  capturaFoto() {
+    this.foto.getContext("2d").drawImage(this.video, 110, 0, 420, 420, 0, 0, 420, 420);
     this.img = this.foto.toDataURL("image/jpg");
   }
-  guardar(){
+  guardar() {
     this._route.params.subscribe(params => {
       this._foto.subirFoto(this.img, params.id)
-      .subscribe(res => {
-        console.log(res);
-      })        
+        .subscribe(res => {
+          if (res) {
+            const tracks = this.localStream.getTracks();
+            tracks.forEach((track) => {
+              track.stop();
+            });
+            this._location.back();
+          }
+        });
     })
   }
-
 }
 

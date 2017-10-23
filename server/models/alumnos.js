@@ -12,7 +12,8 @@ var AlumnosSchema = new Schema({
     grado: String,
     grupo: String,
     matricula: String,
-    tutor: { type: mongoose.SchemaTypes.ObjectId, ref:'Personal'}
+    tutor: { type: mongoose.SchemaTypes.ObjectId, ref:'Personal'},
+    calificaciones: {}
 }, {
     collection: 'alumnos',
     toObject: { virtuals: true },

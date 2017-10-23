@@ -40,5 +40,20 @@ router.route('/creatutorias')
                 }
             })
     })
+    router.route('/alumnos/calificaciones')
+    .put((req, res) => {
+        if (req.body.matricula && req.body.matricula.length > 1 && req.body.calificaciones)
+        Alumnos.update({matricula: req.body.matricula}, {
+            $set: {
+                "calificaciones" : req.body.calificaciones
+            }, function(err, updated) {
+                if (err) {
+                    console.log(err);
+                    res.send(false);
+                };
+                res.send(true);
+            }
+        })
+    })
 
 module.exports = router;

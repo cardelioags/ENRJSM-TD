@@ -16,7 +16,8 @@ import {
   CovalentDataTableModule,
   CovalentPagingModule,
   CovalentSearchModule,
-  CovalentDialogsModule
+  CovalentDialogsModule,
+  CovalentFileModule
 } from "@covalent/core";
 /**
  * Angular Material
@@ -86,7 +87,8 @@ import { CamaraComponent } from './camara/camara.component';
 import { TutoriaComponent } from './tutoria/tutoria/tutoria.component';
 import { FormAccionComponent } from './tutoria/tutoria/form-accion/form-accion.component';
 import { FormPlanComponent } from './tutoria/tutoria/form-plan/form-plan.component';
-import { PlanesEstComponent } from './administracion/planes-est/planes-est.component'
+import { PlanesEstComponent } from './administracion/planes-est/planes-est.component';
+import { CargaMasivaComponent } from './administracion/carga-masiva/carga-masiva.component';
 
 
 
@@ -124,7 +126,8 @@ import { PlanesEstComponent } from './administracion/planes-est/planes-est.compo
     TutoriaComponent,
     FormAccionComponent,
     FormPlanComponent,
-    PlanesEstComponent
+    PlanesEstComponent,
+    CargaMasivaComponent
   ],
   imports: [
     HttpModule,
@@ -141,6 +144,7 @@ import { PlanesEstComponent } from './administracion/planes-est/planes-est.compo
     CovalentSearchModule,
     CovalentDialogsModule,
     CovalentStepsModule,
+    CovalentFileModule,
     MatIconModule,
     MatListModule,
     MatCardModule,

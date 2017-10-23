@@ -13,6 +13,9 @@ import { JwtHelper } from "angular2-jwt";
 })
 export class LoginComponent implements OnInit {
   jwt: JwtHelper = new JwtHelper()
+  usr:String;
+  pass: String;
+  
   constructor(public media: TdMediaService, private _login: LoginService, private _router: Router) { }
   ngOnInit() {
     if(this._login.loggedIn()){

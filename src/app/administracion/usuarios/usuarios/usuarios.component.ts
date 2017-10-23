@@ -38,6 +38,7 @@ export class UsuariosComponent implements AfterViewInit {
   selectedRows: any[] = [];
   selectable: true;
   multiple: true;
+  clickable: true;
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   constructor(

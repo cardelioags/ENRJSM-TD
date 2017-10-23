@@ -11,7 +11,7 @@ import { Location, UpperCasePipe } from '@angular/common';
   providers: [PersonalService]
 })
 export class PersonalNuevoComponent implements OnInit {
-  public personal = { nombre: '' };
+  public personal = { nombre: '', curp: '', email: '', funcion: '', observacion: '' };
   private sub: any;
   public id: any;
   public titulo = ""

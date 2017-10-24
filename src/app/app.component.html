@@ -1,10 +1,24 @@
 <td-layout>
   <td-navigation-drawer flex sidenavTitle="ENRJSM" name="Firstname Lastname" email="firstname.lastname@company.com">
     <mat-nav-list>
-      <div *ngFor="let item of routes">
-        <a tdLayoutToggle mat-list-item [routerLink]="[item.route]">
-          <mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
-      </div>
+      <a *ngIf="true" tdLayoutToggle mat-list-item [routerLink]="['/login']">
+        <mat-icon>home</mat-icon>Principal
+      </a>
+      <a *ngIf="permisos.AL" tdLayoutToggle mat-list-item [routerLink]="['/alumnos']">
+        <mat-icon>face</mat-icon>Control Escolar
+      </a>
+      <a *ngIf="permisos.TA" tdLayoutToggle mat-list-item [routerLink]="['/tutoria']">
+        <mat-icon>school</mat-icon>Tutorias
+      </a>
+      <a *ngIf="permisos.EV" tdLayoutToggle mat-list-item [routerLink]="['/evaluacion']">
+        <mat-icon>playlist_add_check</mat-icon>Evaluación
+      </a>
+      <a *ngIf="permisos.RE" tdLayoutToggle mat-list-item [routerLink]="['/reportes']">
+        <mat-icon>insert_chart</mat-icon>Reportes
+      </a>
+      <a *ngIf="permisos.AD" tdLayoutToggle mat-list-item [routerLink]="['/administracion']">
+        <mat-icon>security</mat-icon>Administración
+      </a>
     </mat-nav-list>
     <div td-navigation-drawer-menu>
       <mat-nav-list>
@@ -25,8 +39,23 @@
       </a>
       <span [routerLink]="['/']" class="cursor-pointer"> ENRJSM</span>
       <span flex></span>
-      <a *ngFor="let item of routes" mat-icon-button  [matTooltip]="item.title" [routerLink]="[item.route]">
-        <mat-icon>{{item.icon}}</mat-icon>
+      <a mat-icon-button *ngIf="true" [routerLink]="['/login']">
+        <mat-icon>home</mat-icon>
+      </a>
+      <a mat-icon-button *ngIf="permisos.AL" [routerLink]="['/alumnos']">
+        <mat-icon>face</mat-icon>
+      </a>
+      <a mat-icon-button *ngIf="permisos.TA" [routerLink]="['/tutoria']">
+        <mat-icon>school</mat-icon>
+      </a>
+      <a mat-icon-button *ngIf="permisos.EV" [routerLink]="['/evaluacion']">
+        <mat-icon>playlist_add_check</mat-icon>
+      </a>
+      <a mat-icon-button *ngIf="permisos.RE" [routerLink]="['/reportes']">
+        <mat-icon>insert_chart</mat-icon>
+      </a>
+      <a mat-icon-button *ngIf="permisos.AD" [routerLink]="['/administracion']">
+        <mat-icon>security</mat-icon>
       </a>
     </div>
     <router-outlet></router-outlet>

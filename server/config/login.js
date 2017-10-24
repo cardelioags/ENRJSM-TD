@@ -27,7 +27,7 @@ module.exports = {
             permisos: usuario.rol.permisos,
             personal: usuario.personal._id
         }
-        return jwt.sign(payload, conf.ks, { expiresIn: '20m' })
+        return jwt.sign(payload, conf.ks, { expiresIn: '2d' })
         }
         return '';
     }

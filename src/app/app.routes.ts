@@ -5,9 +5,6 @@ import { LoginComponent } from './login/login.component';
 import { ReportesComponent } from "./reportes/reportes.component";
 import { MainAlumnosComponent } from "./alumnos/main.alumnos.component";
 import { AlumnosComponent } from "./alumnos/alumnos/alumnos.component";
-import { MainTutoresComponent } from "./tutores/main.tutores.component";
-import { TutoresComponent } from "./tutores/tutores/tutores.component";
-import { TutorNuevoComponent } from "./tutores/tutor-nuevo/tutor-nuevo.component";
 import { MainTutoriaComponent } from "./tutoria/main-tutoria.component";
 import { AsignacionComponent } from "./tutoria/asignacion/asignacion.component";
 import { EvaluacionComponent } from "./evaluacion/evaluacion.component";
@@ -40,14 +37,6 @@ const routes: Routes = [
     path: 'alumnos', component: MainAlumnosComponent, children:
     [
       { path: '', component: AlumnosComponent }
-    ]
-  },
-  {
-    path: 'tutores', component: MainTutoresComponent, children:
-    [
-      { path: '', component: TutoresComponent },
-      { path: 'nuevo', component: TutorNuevoComponent },
-      { path: 'editar/:id', component: TutorNuevoComponent }
     ]
   },
   {

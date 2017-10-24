@@ -6,6 +6,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormAccionComponent } from "./form-accion/form-accion.component";
 import { FormPlanComponent } from "./form-plan/form-plan.component";
 import { TdDialogService } from '@covalent/core';
+import { LoginService } from "../../../services/login.service";
 
 @Component({
   selector: 'app-tutoria',
@@ -20,18 +21,23 @@ export class TutoriaComponent implements OnInit {
   plan: Plan;
   accion: Accion;
   id:any;
+  public user:any;
 
 
   constructor(
     private _tutorias: TutoriasService,
     private actRoute: ActivatedRoute,
     public dialog: MatDialog,
-    public _dialogService: TdDialogService
+    public _dialogService: TdDialogService,
+    private _login: LoginService
+    
   ) { }
 
   ngOnInit() {
     this.actRoute.params.subscribe(params => {
-      this._tutorias.tutoria(params['id']).subscribe(res => {
+      this.user = this._login.getUsr();
+      this.id = params.id
+      this._tutorias.tutoria(params.id).subscribe(res => {
         this.tutoria = res;
         this.getPlanActivo(res);
         console.log(res);
@@ -69,8 +75,8 @@ export class TutoriaComponent implements OnInit {
       console.log('The dialog was closed');
       if (result !== undefined) {
         this._tutorias.guardarPlan({ plan: result, tutoria: this.tutoria._id })
-          .subscribe(res => {
-            this.plan = result;
+          .subscribe((res:any) => {
+            this.plan = res;
             this.planActivo = true;
           })
       }

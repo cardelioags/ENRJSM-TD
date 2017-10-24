@@ -4,11 +4,10 @@
     <span>Alumnos</span>
   </mat-toolbar>
   <mat-nav-list td-sidenav-content [tdLayoutManageListClose]="!media.query('gt-sm')">
-    <ng-template let-item let-last="last" ngFor [ngForOf]="navmenu">
-      <a mat-list-item>
-        <mat-icon matListIcon>{{item.icon}}</mat-icon> {{item.title}}
-      </a>
-    </ng-template>
+    <!-- Opciones para alumnos -->
+    <a [routerLink]="[ '/alumnos']" mat-list-item>
+      <mat-icon matListIcon>group</mat-icon>Alumnos
+    </a>
   </mat-nav-list>
   <router-outlet></router-outlet>
   <td-layout-footer-inner>

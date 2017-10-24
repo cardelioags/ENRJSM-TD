@@ -3,6 +3,29 @@ var Schema = mongoose.Schema;
 
 var Personal = require('./personal')
 
+var MateriaSchema = new Schema({
+    descripcion: String,
+    creditos: Number,
+    calificacion: Number,
+    asistencia: Number,
+    horas: Number,
+    campo: String,
+    observacion: String
+})
+
+var GradoSchema = new Schema({
+    grado: Number,
+    descripcion: String,
+    materias: [MateriaSchema],
+})
+
+var PlanEstSchema = new Schema({
+    grado: Number,
+    descripcion: String,
+    materias: [GradoSchema],
+})
+
+
 var AlumnosSchema = new Schema({
     nombre: {type: String, required: [true, 'El nombre del alumno es requerido']},
     nombres: String,
@@ -11,9 +34,9 @@ var AlumnosSchema = new Schema({
     curp: String,
     grado: String,
     grupo: String,
-    matricula: String,
+    matricula: Number,
     tutor: { type: mongoose.SchemaTypes.ObjectId, ref:'Personal'},
-    calificaciones: {}
+    calificaciones: [PlanEstSchema],
 }, {
     collection: 'alumnos',
     toObject: { virtuals: true },

@@ -1,40 +1,25 @@
 import { Component, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { TdMediaService } from "@covalent/core";
+import { LoginService } from "../../services/login.service";
 
 @Component({
   //changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-main-tutoria',
   templateUrl: './main-tutoria.component.html',
   styleUrls: ['./main-tutoria.component.css'],
+  providers: [LoginService]
 })
 export class MainTutoriaComponent implements AfterViewInit {
-  navmenu: Object[] = [{
-    icon: 'compare_arrows',
-    route: '/tutoria',
-    title: 'Asignación',
-    description: 'Asignación de Tutor-Tutorado',
-  },{
-    icon: 'list',
-    route: '/tutoria/tutorados',
-    title: 'Lista de Tutorados',
-    description: 'Muestra todos los tutores',
-  },{
-    icon: 'list',
-    route: '/tutoria/mistutorados',
-    title: 'Mis Tutorados',
-    description: 'Muestra los tutorados asignados',
-  },{
-    icon: 'person_add',
-    route: '/tutorias/registro',
-    title: 'Tutorías',
-    description: 'Calificaciones',
-  }
-  ];
+
+  
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
     public media: TdMediaService,
+    private _login: LoginService,
   ) { }
+
+  permisos: any = this._login.getUsr().permisos[0];
 
   ngAfterViewInit(): void {
     // broadcast to all listener observables when loading the page

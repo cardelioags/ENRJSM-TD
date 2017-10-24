@@ -61,11 +61,8 @@ import { ReportesComponent } from './reportes/reportes.component';
 import { MainAlumnosComponent } from './alumnos/main.alumnos.component';
 import { AlumnosComponent } from "./alumnos/alumnos/alumnos.component";
 import { AlumnoNuevoComponent } from "./alumnos/alumno-nuevo/alumno-nuevo.component";
-import { MainTutoresComponent } from './tutores/main.tutores.component';
 import { EvaluacionComponent } from './evaluacion/evaluacion.component';
 import { CalificacionesComponent } from './alumnos/calificaciones/calificaciones.component';
-import { TutoresComponent } from './tutores/tutores/tutores.component';
-import { TutorNuevoComponent } from './tutores/tutor-nuevo/tutor-nuevo.component';
 import { MainTutoriaComponent } from './tutoria/main-tutoria.component';
 import { AdministracionComponent } from './administracion/administracion.component';
 import { MainPersonalComponent } from './administracion/personal/main-personal.component';
@@ -100,11 +97,8 @@ import { CargaMasivaComponent } from './administracion/carga-masiva/carga-masiva
     MainAlumnosComponent,
     AlumnosComponent,
     AlumnoNuevoComponent,
-    MainTutoresComponent,
     EvaluacionComponent,
     CalificacionesComponent,
-    TutoresComponent,
-    TutorNuevoComponent,
     MainTutoriaComponent,
     AdministracionComponent,
     MainPersonalComponent,

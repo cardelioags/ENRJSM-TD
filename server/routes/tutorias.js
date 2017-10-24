@@ -95,18 +95,15 @@ router.route('/tutorias/guardar/plan')
                 }, function (err) {
                     if (err) console.log(err);
                     res.send(true);
-                }, function (err) {
-                    console.log(err);
                 });
         } else {
-            Tutorias.findOne({ _id: req.body.tutoria, "planes._id": req.body.plan._id }, function (err, tutoria) {
-                if (err) console.log(err);
-                tutoria.planes.acciones.push(req.body.accion)
-                tutoria.save(function (err) {
-                    if (err) console.log(err);
-                    res.send(true);
-                })
-            })
+           Tutorias.findOne({ _id: req.body.tutoria }, (err, tutoria) => {
+               let nPlan = tutoria.planes.create(req.body.plan);
+               tutoria.planes.push(nPlan);
+               tutoria.save();
+               res.json(nPlan);
+           })
+     
         }
     })
 router.route('/tutorias/guardar/accion')
@@ -140,7 +137,6 @@ router.route('/tutorias/guardar/accion')
                     if (err) console.log(err);
                     res.send(true);
                 });
-
         }
     })
 router.route('/tutorias/eliminar/:tutoria/:plan/:accion')

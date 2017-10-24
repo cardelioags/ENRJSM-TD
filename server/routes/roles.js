@@ -21,6 +21,7 @@ router.route('/roles')
         Roles.findById(req.body._id, (err, rol) =>{
             if (err) res.status(500).send(err)
             else {
+                rol.titulo = req.body.titulo;
                 rol.descripcion = req.body.descripcion;
                 rol.permisos = req.body.permisos;
                 rol.save((err, rol) =>{

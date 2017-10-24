@@ -4,11 +4,15 @@
     <span>Tutorías</span>
   </mat-toolbar>
   <mat-nav-list td-sidenav-content [tdLayoutManageListClose]="!media.query('gt-sm')">
-    <ng-template let-item let-last="last" ngFor [ngForOf]="navmenu">
-      <a mat-list-item [routerLink]="[ item.route ]">
-        <mat-icon matListIcon>{{item.icon}}</mat-icon> {{item.title}}
-      </a>
-    </ng-template>
+    <a *ngIf="permisos.TUAS" mat-list-item [routerLink]="['/tutoria']">
+      <mat-icon matListIcon>compare_arrows</mat-icon>Asignación
+    </a>
+    <a *ngIf="permisos.TULI" mat-list-item [routerLink]="['/tutoria/tutorados']">
+      <mat-icon matListIcon>list</mat-icon>Lista de Tutorados
+    </a>
+    <a mat-list-item [routerLink]="['/tutoria/mistutorados']">
+      <mat-icon matListIcon>list</mat-icon>Mis tutorados
+    </a>
   </mat-nav-list>
   <router-outlet></router-outlet>
   <td-layout-footer-inner>

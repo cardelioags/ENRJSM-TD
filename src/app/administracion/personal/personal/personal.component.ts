@@ -6,16 +6,18 @@ import { IPageChangeEvent } from '@covalent/core';
 import { PersonalService } from "../../../../services/personal.service";
 import { UsuariosService } from "../../../../services/usuarios.service";
 import { AspectoService } from "../../../../services/aspecto.service";
+import { LoginService } from "../../../../services/login.service";
 
 @Component({
   //changeDetection: ChangeDetectionStrategy.Default,
   selector: 'app-personal',
   templateUrl: './personal.component.html',
   styleUrls: ['./personal.component.css'],
-  providers: [PersonalService, AspectoService, UsuariosService]
+  providers: [PersonalService, AspectoService, UsuariosService, LoginService]
 })
 export class PersonalComponent implements AfterViewInit {
 
+  
   columns: ITdDataTableColumn[] = [
     { name: '_id', label: 'Opciones',width: 150},
     { name: 'nombre', label: 'Nombre', sortable: true, width: 300},
@@ -26,6 +28,7 @@ export class PersonalComponent implements AfterViewInit {
   ];
 
   data: any[] = []; 
+  permisos: any = this._login.getUsr().permisos[0]
 
   filteredData: any[] = this.data;
   filteredTotal: number = this.data.length;
@@ -47,7 +50,8 @@ export class PersonalComponent implements AfterViewInit {
     private chDet: ChangeDetectorRef,
     public aspectoBool: AspectoService,
     private dialog: MatDialog,
-    private _usuarios: UsuariosService
+    private _usuarios: UsuariosService,
+    private _login: LoginService
   ) { }
 
   ngAfterViewInit(): void {

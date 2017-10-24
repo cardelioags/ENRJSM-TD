@@ -22,5 +22,9 @@ export class AlumnosService {
         return this.http.post(this.url, alumno, { headers: this.headers })
             .map(res => res.json());
     }
-}
+    calificaciones(matricula,calificaciones){
+        return this.http.put(this.url+"/calificaciones", {matricula:matricula, calificaciones:calificaciones}, { headers: this.headers })
+        .map(res => res.json());
+    }
 
+}

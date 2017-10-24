@@ -8,33 +8,6 @@ import { TdMediaService } from "@covalent/core";
   styleUrls: ['./main.alumnos.component.css'],
 })
 export class MainAlumnosComponent implements AfterViewInit {
-  navmenu: Object[] = [{
-    icon: 'group',
-    route: '.',
-    title: 'Alumnos',
-    description: 'Alumnos',
-  }, {
-    icon: 'playlist_add_check',
-    route: '.',
-    title: 'Calificaciones',
-    description: 'Calificaciones',
-  }, {
-    icon: 'looks_3',
-    route: '.',
-    title: 'Third item',
-    description: 'Item description',
-  }, {
-    icon: 'looks_4',
-    route: '.',
-    title: 'Fourth item',
-    description: 'Item description',
-  }, {
-    icon: 'looks_5',
-    route: '.',
-    title: 'Fifth item',
-    description: 'Item description',
-  },
-  ];
 
   constructor(private _changeDetectorRef: ChangeDetectorRef,
     public media: TdMediaService) { }

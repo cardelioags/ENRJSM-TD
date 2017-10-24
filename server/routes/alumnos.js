@@ -25,10 +25,10 @@ router.route('/creatutorias')
                 else {
                     let err;
                     let ok;
-                    for (let i in alumnos){
+                    for (let i in alumnos) {
                         let tutoria = new Tutorias();
                         tutoria.alumno = alumnos[i]._id
-                        tutoria.save((err, tutoria_res) =>{
+                        tutoria.save((err, tutoria_res) => {
                             if (err) {
                                 err++;
                             } else {
@@ -40,20 +40,29 @@ router.route('/creatutorias')
                 }
             })
     })
-    router.route('/alumnos/calificaciones')
+router.route('/alumnos/calificaciones')
     .put((req, res) => {
-        if (req.body.matricula && req.body.matricula.length > 1 && req.body.calificaciones)
-        Alumnos.update({matricula: req.body.matricula}, {
-            $set: {
-                "calificaciones" : req.body.calificaciones
-            }, function(err, updated) {
-                if (err) {
-                    console.log(err);
-                    res.send(false);
-                };
-                res.send(true);
-            }
-        })
+        Alumnos.find({matricula : req.body.matricula}, (err, alumno) => {
+            if (err) res.json(err) 
+            res.json(alumno);
+        })  
+        /*if (req.body.matricula && req.body.matricula.length > 1 && req.body.calificaciones) {
+            Alumnos.update({ matricula: req.body.matricula }, {
+                $push: {
+                    calificaciones: req.body.calificaciones
+                },
+                function(err, updated) {
+                    if (err) {
+                        console.log(err);
+                        res.send(false);
+                    };
+                    console.log(updated);
+                    res.send(true);
+                }
+            })
+        } else {
+            res.send(false);
+        }*/
     })
 
 module.exports = router;

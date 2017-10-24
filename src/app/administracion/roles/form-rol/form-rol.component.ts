@@ -13,53 +13,57 @@ export class FormRolComponent implements OnInit {
   public rol: any = {};
   private sub: any;
   public id: any;
-  public titulo = ""
+  public titulo = "";
+  public permisos: any = {};
+
   public menus =
   [
     {
-      titulo: "Alumnos", permiso: false, submenus:
+      titulo: "Alumnos", clave: "AL", permiso: false, submenus:
       [
-        { titulo: "Alumnos", permiso: false },
-        { titulo: "Calificaciones", permiso: false }
+        { titulo: "Alumnos", clave: "ALAL" , permiso: false},
+        { titulo: "Calificaciones", clave: "ALALCA" , permiso: false}
       ]
     }, {
-      titulo: "Tutores", permiso: false, submenus:
+      titulo: "Tutores", clave: "TU", permiso: false, submenus:
       [
-        { titulo: "Listar Tutores", permiso: false },
-        { titulo: "Nuevo Tutor", permiso: false }
+        { titulo: "Listar Tutores", clave: "TULI", permiso: false },
+        { titulo: "Nuevo Tutor", clave: "TUNU", permiso: false }
       ]
     }, {
-      titulo: "Tutorías", permiso: false, submenus:
+      titulo: "Tutorías", clave: "TA", permiso: false, submenus:
       [
-        { titulo: "Asignación", permiso: false },
-        { titulo: "Tutorados", permiso: false },
-        { titulo: "Tutorías", permiso: false }
+        { titulo: "Asignación", clave: "TUAS", permiso: false },
+        { titulo: "Tutorados", clave: "TATU", permiso: false },
+        { titulo: "Tutorías", clave: "TATA", permiso: false }
       ]
     }, {
-      titulo: "Evaluación", permiso: false, submenus:
+      titulo: "Evaluación", clave: "EV", permiso: false, submenus:
       [
-        { titulo: "Instrumentos", permiso: false },
-        { titulo: "Nuevo Instrumento", permiso: false },
-        { titulo: "Aplicaciones", permiso: false },
-        { titulo: "Nueva Aplicación", permiso: false }
+        { titulo: "Instrumentos", clave: "EVIN", permiso: false },
+        { titulo: "Nuevo Instrumento", clave: "EVNI", permiso: false },
+        { titulo: "Aplicaciones", clave: "EVAP", permiso: false },
+        { titulo: "Nueva Aplicación", clave: "EVNA", permiso: false }
       ]
     }, {
-      titulo: "Reportes", permiso: false, submenus:
+      titulo: "Reportes", clave: "RE", permiso: false, submenus:
       [
-        { titulo: "Evaluaciones", permiso: false },
-        { titulo: "Tutoría", permiso: false },
-        { titulo: "Generales", permiso: false },
-        { titulo: "Calificaciones", permiso: false },
+        { titulo: "Evaluaciones", clave: "REEV", permiso: false },
+        { titulo: "Tutoría", clave: "RETU", permiso: false },
+        { titulo: "Generales", clave: "REGE" , permiso: false},
+        { titulo: "Calificaciones", clave: "RECA", permiso: false },
       ]
     }, {
-      titulo: "Administración", permiso: false, submenus:
+      titulo: "Administración", clave: "AD", permiso: false, submenus:
       [
-        { titulo: "Personal", permiso: false },
-        { titulo: "Nuevo Personal", permiso: false },
-        { titulo: "Usuarios", permiso: false },
-        { titulo: "Plan/Materias", permiso: false },
-        { titulo: "Roles/Permisos", permiso: false },
-        { titulo: "Configuración", permiso: false }
+        { titulo: "Personal", clave: "ADPE", permiso: false },
+        { titulo: "Alta Usuarios", clave: "ADAU", permiso: false },
+        { titulo: "Nuevo Personal", clave: "ADNP", permiso: false },
+        { titulo: "Usuarios", clave: "ADUS", permiso: false },
+        { titulo: "Plan/Materias", clave: "ADPL" , permiso: false},
+        { titulo: "Roles/Permisos", clave: "ADRO" , permiso: false},
+        { titulo: "Nuevo Rol", clave: "ADNR" , permiso: false},        
+        { titulo: "Carga Masiva", clave: "ADCM" , permiso: false},        
       ]
     }
   ]
@@ -102,11 +106,21 @@ export class FormRolComponent implements OnInit {
         this._router.navigate(['administracion/roles']);
       })
     } else {
-      this.rol.permisos = this.menus;
+      this.rol.permisos = [this.getPermisos()];
       this._roles.nuevo(this.rol)
         .subscribe(res => {
           this._router.navigate(['administracion/roles']);
         });
     }
+  }
+  getPermisos(){
+    let permiso={}
+    for (let i in this.menus){
+      if(this.menus[i].permiso) permiso[this.menus[i].clave] = true;
+      for (let j in this.menus[i].submenus){
+        if(this.menus[i].submenus[j].permiso) permiso[this.menus[i].submenus[j].clave] = true;
+      }
+    }
+    return permiso
   }
 }

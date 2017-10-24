@@ -4,11 +4,27 @@
   <span>Administración</span>
 </mat-toolbar>
 <mat-nav-list td-sidenav-content [tdLayoutManageListClose]="!media.query('gt-sm')">
-  <ng-template let-item let-last="last" ngFor [ngForOf]="navmenu">
-    <a mat-list-item [routerLink]="[ item.route ]">
-      <mat-icon matListIcon>{{item.icon}}</mat-icon> {{item.title}}
-    </a>
-  </ng-template>
+  <a *ngIf="permisos.ADPE" mat-list-item [routerLink]="[ '/administracion/personal' ]">
+    <mat-icon matListIcon>group</mat-icon> Personal
+  </a>
+  <a *ngIf="permisos.ADNP" mat-list-item [routerLink]="[ '/administracion/personal/nuevo' ]">
+    <mat-icon matListIcon>person_add</mat-icon> Nuevo Personal
+  </a>
+  <a *ngIf="permisos.ADUS" mat-list-item [routerLink]="[ '/administracion/usuarios' ]">
+    <mat-icon matListIcon>face</mat-icon> Usuarios
+  </a>
+  <a *ngIf="permisos.ADRO" mat-list-item [routerLink]="[ '/administracion/roles' ]">
+    <mat-icon matListIcon>perm_identity</mat-icon> Roles y Permisos
+  </a>
+  <a *ngIf="permisos.ADNR" mat-list-item [routerLink]="[ '/administracion/roles/nuevo' ]">
+    <mat-icon matListIcon>perm_identity</mat-icon> Nuevo Rol
+  </a>
+  <a *ngIf="permisos.ADPL" mat-list-item [routerLink]="[ '/administracion/planesEst' ]">
+    <mat-icon matListIcon>perm_identity</mat-icon> Plan de Estudios
+  </a>
+  <a *ngIf="permisos.ADCM" mat-list-item [routerLink]="[ '/administracion/cargaMasiva' ]">
+    <mat-icon matListIcon>build</mat-icon> Carga Masiva
+  </a>
 </mat-nav-list>
 <router-outlet></router-outlet>
 <td-layout-footer-inner>

@@ -48,22 +48,30 @@ export class CargaMasivaComponent implements OnInit {
     console.log(this.data);
   }
   cargaCalificaciones() {
-    for (var i = 1; i <= 3/*this.data.length*/; i++) {
-      var califAlu = this.planesEst;
-      for (var j = 0; j <= this.data[i].length; j++) {
+    var k = 0;
+    var l = 0;
+    for (var i = 1; i < 2/*this.data.length*/; i++) {
+      let califAlu = this.planesEst;
+      k=0;
+      l=0;
+      for (var j = 0; j < this.data[i].length; j++) {
         if (j == 3) {
           var matricula = this.data[i][j];
           console.log(matricula)
         } else if (j > 3) {
-          for (var k in califAlu.grados) {
-            for (var l in califAlu.grados[k].materias) {
-              console.log(this.data[i][j]);
-              califAlu.grados[k].materias[l].calificacion = this.data[i][j];
-            }
+          if (l <= (califAlu.grados[k].materias.length-1)) {
+            califAlu.grados[k].materias[l].calificacion = parseInt(this.data[i][j]);
+            l++;
+          } else {
+            l = 0;
+            k++;
           }
         }
       }
-      console.log(califAlu);
+      this._alumnos.calificaciones(matricula, califAlu)
+      .subscribe(res => {
+        console.log(res);
+      })
     }
   }
 }

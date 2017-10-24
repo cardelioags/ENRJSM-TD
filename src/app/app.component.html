@@ -58,11 +58,12 @@
         <mat-icon>security</mat-icon>
       </a>
     </div>
-    <router-outlet></router-outlet>
+    <router-outlet (onLoged)="onLoged($event)"></router-outlet>
     <td-layout-footer>
       <div layout="row" layout-align="start center">
         <span class="md-caption">Sistema de Tutotorias y Evaluación - Escuela Normal Rural "Justo Sierra Méndez"</span>
       </div>
+      {{permisos | json}}
     </td-layout-footer>
   </td-layout-nav>
 </td-layout>

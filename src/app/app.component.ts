@@ -7,11 +7,11 @@ import { LoginService } from "../services/login.service"
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [AspectoService, LoginService]
+  providers: [AspectoService]
 })
 export class AppComponent implements AfterViewInit {
-  permisos: any = this._login.getUsr().permisos[0];
 
+  permisos: any = {};
 
   usermenu: Object[] = [{
     icon: 'exit_to_app',
@@ -21,12 +21,17 @@ export class AppComponent implements AfterViewInit {
   ];
   constructor(private _changeDetectorRef: ChangeDetectorRef,
     public media: TdMediaService,
-    private _login: LoginService,
-    private aspecto: AspectoService) {
+    private _login: LoginService) { }
 
-  }
 
   ngAfterViewInit(): void {
+    this._login.pubLogged.subscribe(res => {
+      if (res) {
+        console.log("subscripción a el logueo. " + res);
+        this.permisos = this._login.getUsr().permisos[0];
+        this._changeDetectorRef.detectChanges();
+      }
+    })     
     // broadcast to all listener observables when loading the page
     setTimeout(() => { // workaround since MatSidenav has issues redrawing at the beggining
       this.media.broadcast();

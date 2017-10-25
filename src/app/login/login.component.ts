@@ -17,6 +17,10 @@ export class LoginComponent implements OnInit {
 
   constructor(public media: TdMediaService, private _login: LoginService, private _router: Router) { }
   ngOnInit() {
+    this._login.pubLogged.subscribe(res => {
+      if (res)
+      this._router.navigate(['/perfil']);
+    })
     if(this._login.loggedIn()){
       this._router.navigate(['/perfil']);
     }

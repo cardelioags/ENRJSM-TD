@@ -86,6 +86,8 @@ import { FormAccionComponent } from './tutoria/tutoria/form-accion/form-accion.c
 import { FormPlanComponent } from './tutoria/tutoria/form-plan/form-plan.component';
 import { PlanesEstComponent } from './administracion/planes-est/planes-est.component';
 import { CargaMasivaComponent } from './administracion/carga-masiva/carga-masiva.component';
+import { RepositorioComponent } from './tutoria/repositorio/repositorio.component';
+import { RepoModalComponent } from './tutoria/repositorio/repo-modal/repo-modal.component';
 
 
 
@@ -121,7 +123,9 @@ import { CargaMasivaComponent } from './administracion/carga-masiva/carga-masiva
     FormAccionComponent,
     FormPlanComponent,
     PlanesEstComponent,
-    CargaMasivaComponent
+    CargaMasivaComponent,
+    RepositorioComponent,
+    RepoModalComponent,
   ],
   imports: [
     HttpModule,

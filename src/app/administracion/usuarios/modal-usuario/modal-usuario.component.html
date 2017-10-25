@@ -14,8 +14,8 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="data" tabindex="2">Ok</button>
-    <button mat-button (click)="onNoClick()" tabindex="-1">No Thanks</button>
+  <div mat-dialog-actions layout="row" layout-align="end">
+    <button mat-button (click)="onNoClick()" tabindex="-1">Cancelar</button>      
+    <button mat-button color="accent" [mat-dialog-close]="data" tabindex="2"><mat-icon class="md-18">save</mat-icon>Guardar</button>
   </div>
 </form>

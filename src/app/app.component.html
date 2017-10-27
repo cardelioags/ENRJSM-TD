@@ -57,6 +57,7 @@
       <a mat-icon-button matTooltip="Administración" *ngIf="permisos.AD" [routerLink]="['/administracion']">
         <mat-icon>security</mat-icon>
       </a>
+      <button mat-raised-button color="accent" (click)="cerrarSesion()" *ngIf="logged">Cerrar Sesión</button>
     </div>
     <router-outlet></router-outlet>
     <td-layout-footer>

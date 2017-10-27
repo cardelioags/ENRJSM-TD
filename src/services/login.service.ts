@@ -22,7 +22,7 @@ export class LoginService {
       .map(res => res.json())
       .subscribe((res:any) => {
         if(res.token && res.estado){
-          localStorage.setItem('token',res.token);
+          sessionStorage.setItem('token',res.token);
           this.usuario = this.jwt.decodeToken(res.token);
           this.subLogged.next(true);
         }
@@ -32,9 +32,10 @@ export class LoginService {
     return tokenNotExpired();
   }
   logout() {
-    localStorage.clear();
+    sessionStorage.clear();
   }
   getUsr() {
-    return this.jwt.decodeToken(localStorage.getItem('token'));
+    if (sessionStorage.getItem('token'))
+    return this.jwt.decodeToken(sessionStorage.getItem('token'));
   }
 }

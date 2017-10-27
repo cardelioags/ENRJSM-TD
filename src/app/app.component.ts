@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit, OnInit {
-
+  logged = false;
   permisos: any = {};
 
   usermenu: Object[] = [{
@@ -29,14 +29,24 @@ export class AppComponent implements AfterViewInit, OnInit {
       if (res) {
         this.permisos = this._login.getUsr().permisos[0];
         this._changeDetectorRef.detectChanges();
+        this.logged = true;
       }
     })
     if (this._login.loggedIn()) {
       this.permisos = this._login.getUsr().permisos[0];
+      this.logged = true;
     } else {
       this.permisos = {};
-      this._router.navigate['/login'];
+      this.logged = false;
+      this._router.navigate(['/login']);
+
     }
+  }
+  cerrarSesion(){
+    this._login.logout();
+    this.logged = false;
+    this.permisos = {};
+    this._router.navigate(['/login']);
   }
 
   ngAfterViewInit(): void {

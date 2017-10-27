@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UsuariosService {
-    private url = 'http://localhost:3000/api/usuarios';
+    private url = '/api/usuarios';
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
     constructor(private http: Http) { }
@@ -14,9 +14,9 @@ export class UsuariosService {
         return this.http.get(this.url + `/${id}`)
             .map(res => res.json());
     }
-    check(usr,pass): Observable<any> {
-        return this.http.post(this.url+"/login", {usr: usr, pass: pass}, {headers: this.headers})
-        .map(res => res.json())
+    check(usr, pass): Observable<any> {
+        return this.http.post(this.url + "/login", { usr: usr, pass: pass }, { headers: this.headers })
+            .map(res => res.json())
     }
     todos(): Observable<any[]> {
         return this.http.get(this.url)
@@ -24,6 +24,10 @@ export class UsuariosService {
     }
     nuevo(usuario): Observable<any[]> {
         return this.http.post(this.url, usuario, { headers: this.headers })
+            .map(res => res.json());
+    }
+    newpass(pass, id): Observable<any> {
+        return this.http.put(this.url + `/${id}/newpass`, {pass:pass}, { headers: this.headers })
             .map(res => res.json());
     }
 }

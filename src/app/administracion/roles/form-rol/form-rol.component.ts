@@ -14,15 +14,15 @@ export class FormRolComponent implements OnInit {
   private sub: any;
   public id: any;
   public titulo = "";
-  public permisos: any = {};
+  private permisos: any = {};
 
   public menus =
   [
     {
       titulo: "Alumnos", clave: "AL", permiso: false, submenus:
       [
-        { titulo: "Alumnos", clave: "ALAL" , permiso: false},
-        { titulo: "Calificaciones", clave: "ALALCA" , permiso: false}
+        { titulo: "Alumnos", clave: "ALAL", permiso: false },
+        { titulo: "Calificaciones", clave: "ALALCA", permiso: false }
       ]
     }, {
       titulo: "Tutores", clave: "TU", permiso: false, submenus:
@@ -34,8 +34,9 @@ export class FormRolComponent implements OnInit {
       titulo: "Tutorías", clave: "TA", permiso: false, submenus:
       [
         { titulo: "Asignación", clave: "TUAS", permiso: false },
+        { titulo: "Mis Tutorados", clave: "TUMI", permiso: false },        
         { titulo: "Tutorados", clave: "TATU", permiso: false },
-        { titulo: "Tutorías", clave: "TATA", permiso: false }
+        { titulo: "Repositorio", clave: "TARE", permiso: false }
       ]
     }, {
       titulo: "Evaluación", clave: "EV", permiso: false, submenus:
@@ -50,7 +51,7 @@ export class FormRolComponent implements OnInit {
       [
         { titulo: "Evaluaciones", clave: "REEV", permiso: false },
         { titulo: "Tutoría", clave: "RETU", permiso: false },
-        { titulo: "Generales", clave: "REGE" , permiso: false},
+        { titulo: "Generales", clave: "REGE", permiso: false },
         { titulo: "Calificaciones", clave: "RECA", permiso: false },
       ]
     }, {
@@ -60,10 +61,10 @@ export class FormRolComponent implements OnInit {
         { titulo: "Alta Usuarios", clave: "ADAU", permiso: false },
         { titulo: "Nuevo Personal", clave: "ADNP", permiso: false },
         { titulo: "Usuarios", clave: "ADUS", permiso: false },
-        { titulo: "Plan/Materias", clave: "ADPL" , permiso: false},
-        { titulo: "Roles/Permisos", clave: "ADRO" , permiso: false},
-        { titulo: "Nuevo Rol", clave: "ADNR" , permiso: false},        
-        { titulo: "Carga Masiva", clave: "ADCM" , permiso: false},        
+        { titulo: "Plan/Materias", clave: "ADPL", permiso: false },
+        { titulo: "Roles/Permisos", clave: "ADRO", permiso: false },
+        { titulo: "Nuevo Rol", clave: "ADNR", permiso: false },
+        { titulo: "Carga Masiva", clave: "ADCM", permiso: false },
       ]
     }
   ]
@@ -91,8 +92,15 @@ export class FormRolComponent implements OnInit {
         this._roles.rol(this.id)
           .subscribe((res: any) => {
             this.rol = res;
-            this.menus = res.permisos;
+            this.permisos = res.permisos[0];
+            for (let i in this.menus) {
+              if (this.permisos[this.menus[i].clave]) this.menus[i].permiso = true;
+              for (let j in this.menus[i].submenus) {
+                if (this.permisos[this.menus[i].submenus[j].clave]) this.menus[i].submenus[j].permiso = true;
+              }
+            }
           })
+
       } else {
         this.titulo = 'Nuevo Rol';
       }
@@ -100,11 +108,11 @@ export class FormRolComponent implements OnInit {
   }
   guardar() {
     if (this.id !== undefined) {
-      this.rol.permisos = this.menus;
+      this.rol.permisos = [this.getPermisos()];
       this._roles.editar(this.rol)
-      .subscribe(res => {
-        this._router.navigate(['administracion/roles']);
-      })
+        .subscribe(res => {
+          this._router.navigate(['administracion/roles']);
+        })
     } else {
       this.rol.permisos = [this.getPermisos()];
       this._roles.nuevo(this.rol)
@@ -113,12 +121,12 @@ export class FormRolComponent implements OnInit {
         });
     }
   }
-  getPermisos(){
-    let permiso={}
-    for (let i in this.menus){
-      if(this.menus[i].permiso) permiso[this.menus[i].clave] = true;
-      for (let j in this.menus[i].submenus){
-        if(this.menus[i].submenus[j].permiso) permiso[this.menus[i].submenus[j].clave] = true;
+  getPermisos() {
+    let permiso = {}
+    for (let i in this.menus) {
+      if (this.menus[i].permiso) permiso[this.menus[i].clave] = true;
+      for (let j in this.menus[i].submenus) {
+        if (this.menus[i].submenus[j].permiso) permiso[this.menus[i].submenus[j].clave] = true;
       }
     }
     return permiso

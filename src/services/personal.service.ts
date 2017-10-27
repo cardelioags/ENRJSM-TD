@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PersonalService {
-    private url = 'http://localhost:3000/api/personal';
+    private url = '/api/personal';
     private headers = new Headers({'Content-Type':'application/json'});
 
         constructor(private http: Http){}

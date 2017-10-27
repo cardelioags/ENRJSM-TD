@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from "./app.routes";
+import { FileUploadModule } from 'ng2-file-upload';
+
 
 /**
  * Framework Teradata Covalent
@@ -40,7 +42,8 @@ import {
   MatPseudoCheckboxModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatRadioModule
+  MatRadioModule,
+  MatProgressBarModule
 } from "@angular/material";
 /**
  * Móludo Auth JWT
@@ -88,6 +91,8 @@ import { PlanesEstComponent } from './administracion/planes-est/planes-est.compo
 import { CargaMasivaComponent } from './administracion/carga-masiva/carga-masiva.component';
 import { RepositorioComponent } from './tutoria/repositorio/repositorio.component';
 import { RepoModalComponent } from './tutoria/repositorio/repo-modal/repo-modal.component';
+import { TutoriaPrincipalComponent } from './tutoria/tutoria-principal/tutoria-principal.component';
+
 
 
 
@@ -126,6 +131,7 @@ import { RepoModalComponent } from './tutoria/repositorio/repo-modal/repo-modal.
     CargaMasivaComponent,
     RepositorioComponent,
     RepoModalComponent,
+    TutoriaPrincipalComponent
   ],
   imports: [
     HttpModule,
@@ -160,7 +166,9 @@ import { RepoModalComponent } from './tutoria/repositorio/repo-modal/repo-modal.
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
-    AuthModule
+    MatProgressBarModule,
+    AuthModule,
+    FileUploadModule
   ],
   providers: [
     TdMediaService,

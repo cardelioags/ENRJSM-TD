@@ -4,13 +4,13 @@
     <span>Tutorías</span>
   </mat-toolbar>
   <mat-nav-list td-sidenav-content [tdLayoutManageListClose]="!media.query('gt-sm')">
-    <a *ngIf="permisos.TUAS" mat-list-item [routerLink]="['/tutoria']">
+    <a *ngIf="permisos.TUAS" mat-list-item [routerLink]="['/tutoria/asignacion']">
       <mat-icon matListIcon>compare_arrows</mat-icon>Asignación
     </a>
     <a *ngIf="permisos.TULI" mat-list-item [routerLink]="['/tutoria/tutorados']">
       <mat-icon matListIcon>list</mat-icon>Lista de Tutorados
     </a>
-    <a mat-list-item [routerLink]="['/tutoria/mistutorados']">
+    <a *ngIf="permisos.TUMI" mat-list-item [routerLink]="['/tutoria/mistutorados']">
       <mat-icon matListIcon>list</mat-icon>Mis tutorados
     </a>
     <a mat-list-item [routerLink]="['/tutoria/repositorio']">

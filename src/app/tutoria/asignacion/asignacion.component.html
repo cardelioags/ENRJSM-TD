@@ -4,18 +4,14 @@
       <mat-icon>arrow_back</mat-icon>
     </button>
     <span>Asignación de Tutores</span>
-    <!--<span flex></span>-->
-    <button mat-icon-button>
-      <mat-icon>settings</mat-icon>
-      <a mat-raised-button (click)="openDialog()" color="primary" *ngIf="selectedRows.length > 0">Asignar a {{selectedRows.length}} alumnos seleccionados</a>
-    </button>
+    <a mat-raised-button (click)="openDialog()" color="primary" *ngIf="selectedRows.length > 0">Asignar a {{selectedRows.length}} alumnos seleccionados</a>
   </div>
 </mat-toolbar>
 <mat-card style="margin-top: 70px;">
   <mat-card-content>
     <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
       <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
-        <span class="md-title">Title here</span>
+        <span class="md-title">Elije alumnas para asignación de tutor.</span>
       </span>
       <span *ngIf="!searchBox.searchVisible" class="push-left-sm">
         <span *ngIf="(selectable && !selectedRows.length) || !selectable" class="md-title"></span>
@@ -29,10 +25,10 @@
     <td-data-table #dataTable [data]="filteredData" [columns]="columns" [selectable]="selectable" [clickable]="clickable" [multiple]="multiple"
       [sortable]="true" [sortBy]="sortBy" [(ngModel)]="selectedRows" [sortOrder]="sortOrder" (sortChange)="sort($event)">
       <ng-template tdDataTableTemplate="tutor._id" let-value="value">
-        <img [src]="'http://localhost:3000/'+value+'.jpg'" onerror="this.src = 'http://localhost:3000/def.png'">
-      </ng-template>    
+        <img [src]="value+'.jpg'" onerror="this.src = 'def.png'">
+      </ng-template>
       <ng-template tdDataTableTemplate="id" let-value="value">
-        <img [src]="'http://localhost:3000/'+value+'.jpg'" onerror="this.src = 'http://localhost:3000/def.png'">
+        <img [src]="value+'.jpg'" onerror="this.src = 'def.png'">
       </ng-template>
     </td-data-table>
     <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">

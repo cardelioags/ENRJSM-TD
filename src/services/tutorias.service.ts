@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TutoriasService {
-    private url = 'http://localhost:3000/api/tutorias';
+    private url = '/api/tutorias';
     private headers = new Headers({'Content-Type':'application/json'});
 
         constructor(private http: Http){}

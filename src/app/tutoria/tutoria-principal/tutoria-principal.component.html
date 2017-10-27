@@ -1,0 +1,26 @@
+<mat-toolbar>
+  <div layout="row" layout-align="start center" flex>
+    <button mat-icon-button tdLayoutManageListOpen [hideWhenOpened]="true">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Principal</span>
+    <!--<span flex></span>-->
+  </div>
+</mat-toolbar>
+<mat-card>
+  <mat-card-title>En este módulo tienes las siguientes opciones:</mat-card-title>
+  <mat-card-content>
+      <a mat-button *ngIf="permisos.TUAS"  [routerLink]="['/tutoria/asignacion']">
+        <mat-icon matListIcon>compare_arrows</mat-icon>Asignación
+      </a>
+      <a mat-button *ngIf="permisos.TULI"  [routerLink]="['/tutoria/tutorados']">
+        <mat-icon matListIcon>list</mat-icon>Lista de Tutorados
+      </a>
+      <a mat-button *ngIf="permisos.TUMI" [routerLink]="['/tutoria/mistutorados']">
+        <mat-icon matListIcon>list</mat-icon>Mis tutorados
+      </a>
+      <a mat-button  [routerLink]="['/tutoria/repositorio']">
+        <mat-icon matListIcon>folder</mat-icon>Repositorio
+      </a>
+  </mat-card-content>
+</mat-card>

@@ -34,7 +34,7 @@
 
         <ng-template tdDataTableTemplate="_id" let-value="value">
           <a [routerLink]="[ '/camara', value ]">
-            <img [src]="'http://localhost:3000/'+value+'.jpg'" onerror="this.src = 'http://localhost:3000/def.png'">
+            <img [src]="value+'.jpg'" onerror="this.src = 'def.png'">
           </a>
 
           <button mat-icon-button [routerLink]="[ '/administracion/personal/editar', value ]">

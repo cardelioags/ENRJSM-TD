@@ -39,22 +39,22 @@
       </a>
       <span [routerLink]="['/']" class="cursor-pointer"> ENRJSM</span>
       <span flex></span>
-      <a mat-icon-button *ngIf="true" [routerLink]="['/login']">
+      <a mat-icon-button matTooltip="Principal" *ngIf="true" [routerLink]="['/login']">
         <mat-icon>home</mat-icon>
       </a>
-      <a mat-icon-button *ngIf="permisos.AL" [routerLink]="['/alumnos']">
+      <a mat-icon-button matTooltip="Alumnos" *ngIf="permisos.AL" [routerLink]="['/alumnos']">
         <mat-icon>face</mat-icon>
       </a>
-      <a mat-icon-button *ngIf="permisos.TA" [routerLink]="['/tutoria']">
+      <a mat-icon-button matTooltip="Tutoría" *ngIf="permisos.TA" [routerLink]="['/tutoria']">
         <mat-icon>school</mat-icon>
       </a>
-      <a mat-icon-button *ngIf="permisos.EV" [routerLink]="['/evaluacion']">
+      <a mat-icon-button matTooltip="Evaluación" *ngIf="permisos.EV" [routerLink]="['/evaluacion']">
         <mat-icon>playlist_add_check</mat-icon>
       </a>
-      <a mat-icon-button *ngIf="permisos.RE" [routerLink]="['/reportes']">
+      <a mat-icon-button matTooltip="Reportes" *ngIf="permisos.RE" [routerLink]="['/reportes']">
         <mat-icon>insert_chart</mat-icon>
       </a>
-      <a mat-icon-button *ngIf="permisos.AD" [routerLink]="['/administracion']">
+      <a mat-icon-button matTooltip="Administración" *ngIf="permisos.AD" [routerLink]="['/administracion']">
         <mat-icon>security</mat-icon>
       </a>
     </div>

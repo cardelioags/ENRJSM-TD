@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"enrjsm-te.tutores"},{"v":1,"unique":true,"key":{"tutor":1},"name":"tutor_1","ns":"enrjsm-te.tutores"}]}

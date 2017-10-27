@@ -5,7 +5,7 @@ import { Http, RequestOptions, Headers } from "@angular/http";
 export class PlanesEstService {
     constructor(private http: Http){  }
     
-    private url = 'http://localhost:3000/api/planes-est';
+    private url = '/api/planes-est';
     private headers = new Headers({'Content-Type':'application/json'});
 
     todos(){

@@ -21,6 +21,7 @@ import { PerfilComponent } from "./perfil/perfil.component";
 import { TutoradosComponent } from "./tutoria/tutorados/tutorados.component";
 import { MisTutoradosComponent } from "./tutoria/mis-tutorados/mis-tutorados.component";
 import { TutoriaComponent } from "./tutoria/tutoria/tutoria.component";
+import { TutoriaPrincipalComponent } from "./tutoria/tutoria-principal/tutoria-principal.component";
 import { CamaraComponent } from "./camara/camara.component";
 import { PlanesEstComponent } from "./administracion/planes-est/planes-est.component";
 import { CargaMasivaComponent } from "./administracion/carga-masiva/carga-masiva.component";
@@ -43,7 +44,8 @@ const routes: Routes = [
   {
     path: 'tutoria', component: MainTutoriaComponent, children:
     [
-      { path: '', component: AsignacionComponent },
+      { path: '', component: TutoriaPrincipalComponent },
+      { path: 'asignacion', component: AsignacionComponent },
       { path: 'tutorados', component: TutoradosComponent },
       { path: 'mistutorados', component: MisTutoradosComponent },
       { path: 'repositorio', component: RepositorioComponent }

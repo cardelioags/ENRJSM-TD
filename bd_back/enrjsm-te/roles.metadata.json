@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":1,"key":{"_id":1},"name":"_id_","ns":"enrjsm-te.roles"},{"v":1,"unique":true,"key":{"titulo":1},"name":"titulo_1","ns":"enrjsm-te.roles","background":true}]}

@@ -108,7 +108,7 @@ router.route('/tutorias/guardar/plan')
     })
 router.route('/tutorias/guardar/accion')
     .put((req, res) => {
-        if (req.body.accion._id) {
+        if (req.body.iaccion) {
             Tutorias.update({
                 _id: req.body.tutoria, "planes._id": req.body.plan._id
             },

@@ -46,5 +46,17 @@ router.route('/usuarios/:id')
             res.json(usuario);
         })
     })
+router.route('/usuarios/:id/newpass')
+    .put((req, res) => {
+        Usuarios.findOne({personal:req.params.id}, (err, usuario) => {
+            if (err) console.log(err);
+            if(usuario){
+                usuario.contrasena = req.body.pass;
+                usuario.save();
+            }
+            res.send(true);
+        })
+    })
+
 
 module.exports = router;

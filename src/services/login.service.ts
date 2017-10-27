@@ -18,7 +18,7 @@ export class LoginService {
   public pubLogged: Observable<any> = this.subLogged.asObservable()
   
   login(usr, pass) {
-    this._http.post('http://localhost:3000/api/login', { usr: usr, pass: pass }, { headers: new Headers({ 'Content-Type': 'application/json' }) })
+    this._http.post('/api/login', { usr: usr, pass: pass }, { headers: new Headers({ 'Content-Type': 'application/json' }) })
       .map(res => res.json())
       .subscribe((res:any) => {
         if(res.token && res.estado){

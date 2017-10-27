@@ -5,12 +5,6 @@
     </button>
     <span>Mis Tutoradas - </span>
     <!--<span flex></span>-->
-    <button mat-icon-button>
-      <a mat-raised-button [routerLink]="[ '/tutoria', selectedRows[0].alumno._id ]" color="accent" *ngIf="selectedRows.length > 0">Tutoría de {{selectedRows[0].nomAlu}}</a>
-      <button mat-icon-button (click)="seleccionados()">
-          <mat-icon class="md-24">pageview</mat-icon>
-      </button>
-    </button>
   </div>
 </mat-toolbar>
 <mat-card style="margin-top: 70px;">

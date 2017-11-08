@@ -59,6 +59,7 @@ const loginRoutes = require('./server/routes/login');
 const planesEst = require('./server/routes/planes-est');
 const subeFoto = require('./server/routes/foto');
 const repositorio = require('./server/routes/repositorio');
+const evaluaciones = require('./server/routes/evaluaciones');
 
 
 
@@ -72,7 +73,8 @@ app.use('/api', [
   loginRoutes,
   planesEst,
   subeFoto,
-  repositorio
+  repositorio,
+  evaluaciones
 ]);
 
 app.use(express.static(path.join(__dirname, 'server/fotos_perfil/')))
